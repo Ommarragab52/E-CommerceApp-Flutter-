@@ -12,7 +12,7 @@ class EmailPasswordTextFiled extends StatefulWidget {
 
 class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
   var isPassword = true;
-  @override
+
   @override
   Widget build(BuildContext context) {
     return Form(

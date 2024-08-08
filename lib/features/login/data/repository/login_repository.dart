@@ -12,7 +12,7 @@ class LoginRepository {
       var response =
           await apiServices.signIn(loginRequest: loginRequest, lang: lang);
       return LoginResponse.fromJson(response.data);
-    } catch (error) {
+    } catch (e) {
       rethrow;
     }
   }
