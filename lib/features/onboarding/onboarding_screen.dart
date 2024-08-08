@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
+import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
 import 'package:flutter_ecommerce_app/core/routing/routes.dart';
 import 'package:flutter_ecommerce_app/features/onboarding/widgets/page_view_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -32,7 +32,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           TextButton(
               onPressed: () {
                 context.pushAndRemoveNamed(
-                    Routes.onBoardingScreen, (route) => false);
+                    Routes.loginScreen, (route) => false);
               },
               child: Text('Skip'))
         ],
@@ -61,8 +61,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FloatingActionButton(
                 onPressed: () {
                   if (pageController.page == onBoardList.length - 1) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Last Page')));
+                    context.pushAndRemoveNamed(
+                        Routes.loginScreen, (route) => false);
                   } else {
                     pageController.nextPage(
                         duration: const Duration(milliseconds: 750),
