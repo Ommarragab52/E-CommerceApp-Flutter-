@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/core/routing/app_router.dart';
 import 'package:flutter_ecommerce_app/core/routing/routes.dart';
-import 'package:flutter_ecommerce_app/core/theming/colors.dart';
 import 'package:flutter_ecommerce_app/core/theming/theme.dart';
 
 class EcommerceApp extends StatelessWidget {

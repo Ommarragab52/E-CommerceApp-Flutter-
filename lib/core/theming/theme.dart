@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/core/theming/colors.dart';
 
 ThemeData lightTheme = ThemeData(
-    textTheme: const TextTheme(),
+    snackBarTheme: const SnackBarThemeData(
+      backgroundColor: AppColors.mainColor,
+    ),
     appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
@@ -55,6 +57,6 @@ ThemeData lightTheme = ThemeData(
         onSecondary: Colors.white,
         error: Colors.red,
         onError: const Color.fromARGB(255, 0, 0, 0),
-        surface: Color.fromARGB(255, 255, 255, 255),
-        onSurface: AppColors.mainColor),
+        surface: Colors.white,
+        onSurface: Colors.black87),
     scaffoldBackgroundColor: Colors.white);
