@@ -10,10 +10,10 @@ class LoginCubit extends Cubit<LoginState> {
   var formKey = GlobalKey<FormState>();
   var emailColtroller = TextEditingController();
   var passwordColtroller = TextEditingController();
-  var loginRepository = LoginRepository(apiServices: ApiServices());
 
   void signIn() {
     emit(LoginLoadingState());
+    var loginRepository = LoginRepository(apiServices: ApiServices());
     loginRepository
         .signIn(
             loginRequest: LoginRequest(

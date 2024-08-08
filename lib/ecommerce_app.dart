@@ -12,7 +12,7 @@ class EcommerceApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      initialRoute: Routes.loginScreen,
+      initialRoute: Routes.registerScreen,
       onGenerateRoute: appRouter.generateRoute,
     );
   }
