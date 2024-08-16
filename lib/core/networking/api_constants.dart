@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const BASE_URL = 'https://student.valuxapps.com/api/';
-  static const LOGIN_ENDPOINT = 'login';
-  static const REGISTER_ENDPOINT = 'register';
+  static const baseUrl = 'https://student.valuxapps.com/api/';
+  static const login = 'login';
+  static const register = 'register';
+  static const home = 'home';
 }

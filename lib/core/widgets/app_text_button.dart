@@ -8,14 +8,14 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 57,
       width: double.infinity,
       child: TextButton(
           onPressed: onPressed,
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700),
           )),
     );

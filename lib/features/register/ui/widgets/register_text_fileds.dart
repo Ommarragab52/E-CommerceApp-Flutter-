@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/widgets/app_text_form_filed.dart';
-import 'package:flutter_ecommerce_app/features/register/logic/register_cubit.dart';
+
+import '../../../../core/widgets/app_text_form_filed.dart';
+import '../../logic/register_cubit.dart';
 
 class RegisterTextFileds extends StatefulWidget {
   const RegisterTextFileds({super.key});

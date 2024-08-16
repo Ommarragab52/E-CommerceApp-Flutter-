@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/routing/routes.dart';
-import 'package:flutter_ecommerce_app/features/login/logic/login_cubit.dart';
-import 'package:flutter_ecommerce_app/features/login/ui/login_screen.dart';
-import 'package:flutter_ecommerce_app/features/onboarding/onboarding_screen.dart';
-import 'package:flutter_ecommerce_app/features/register/logic/register_cubit.dart';
-import 'package:flutter_ecommerce_app/features/register/ui/register_screen.dart';
+import 'package:flutter_ecommerce_app/features/home/logic/home_cubit.dart';
+import 'package:flutter_ecommerce_app/features/home/ui/home_screen.dart';
+
+import '../../features/login/logic/login_cubit.dart';
+import '../../features/login/ui/login_screen.dart';
+import '../../features/onboarding/onboarding_screen.dart';
+import '../../features/register/logic/register_cubit.dart';
+import '../../features/register/ui/register_screen.dart';
+import 'routes.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -25,7 +28,11 @@ class AppRouter {
             builder: (context) => BlocProvider(
                 create: (context) => RegisterCubit(),
                 child: const RegisterScreen()));
-
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+              create: (context) => HomeCubit(), child: const HomeScreen()),
+        );
       default:
         return null;
     }

@@ -1,7 +1,7 @@
 class RegisterResponse {
   bool? status;
   String? message;
-  dynamic data;
+  UserRegisterModel? data;
   RegisterResponse({
     this.status,
     this.message,
@@ -10,7 +10,9 @@ class RegisterResponse {
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
     return RegisterResponse(
-        status: json['status'], message: json['message'], data: json['data']);
+        status: json['status'],
+        message: json['message'],
+        data: UserRegisterModel.fromJson(json['data']));
   }
 }
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/routing/app_router.dart';
-import 'package:flutter_ecommerce_app/core/routing/routes.dart';
-import 'package:flutter_ecommerce_app/core/theming/theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
+import 'core/theming/theme.dart';
 
 class EcommerceApp extends StatelessWidget {
   final AppRouter appRouter;
@@ -9,11 +10,15 @@ class EcommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      initialRoute: Routes.registerScreen,
-      onGenerateRoute: appRouter.generateRoute,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: lightTheme,
+        initialRoute: Routes.homeScreen,
+        onGenerateRoute: appRouter.generateRoute,
+      ),
     );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/widgets/app_text_button.dart';
-import 'package:flutter_ecommerce_app/features/login/logic/login_cubit.dart';
-import 'package:flutter_ecommerce_app/features/login/logic/login_states.dart';
-import 'package:flutter_ecommerce_app/features/login/ui/widgets/email_and_password.dart';
-import 'package:flutter_ecommerce_app/features/login/ui/widgets/login_title_text.dart';
+
+import '../../../core/widgets/app_text_button.dart';
+import '../logic/login_cubit.dart';
+import '../logic/login_states.dart';
+import 'widgets/email_and_password.dart';
+import 'widgets/login_title_text.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -33,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 Container(
                     child: (state is LoginLoadingState)
-                        ? CircularProgressIndicator()
+                        ? const CircularProgressIndicator()
                         : AppTextButton(
                             onPressed: () {
                               if (context

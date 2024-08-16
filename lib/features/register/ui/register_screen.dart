@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/widgets/app_text_button.dart';
-import 'package:flutter_ecommerce_app/features/register/logic/register_cubit.dart';
-import 'package:flutter_ecommerce_app/features/register/logic/register_state.dart';
-import 'package:flutter_ecommerce_app/features/register/ui/widgets/Register_title_text.dart';
-import 'package:flutter_ecommerce_app/features/register/ui/widgets/register_text_fileds.dart';
+
+import '../../../core/widgets/app_text_button.dart';
+import '../logic/register_cubit.dart';
+import '../logic/register_state.dart';
+import 'widgets/Register_title_text.dart';
+import 'widgets/register_text_fileds.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -37,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Container(
                         child: (state is RegisterLoadingState)
-                            ? CircularProgressIndicator()
+                            ? const CircularProgressIndicator()
                             : AppTextButton(
                                 onPressed: () {
                                   if (context

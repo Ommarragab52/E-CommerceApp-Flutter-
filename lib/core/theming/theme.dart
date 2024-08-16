@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/theming/colors.dart';
+import 'colors.dart';
 
 ThemeData lightTheme = ThemeData(
     snackBarTheme: const SnackBarThemeData(

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_ecommerce_app/core/networking/api_constants.dart';
+import 'api_constants.dart';
 
 class DioFactory {
   static Dio? dio;
@@ -11,10 +11,8 @@ class DioFactory {
     if (dio == null) {
       dio = Dio();
       dio!.options = BaseOptions(
-        baseUrl: ApiConstants.BASE_URL,
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        baseUrl: ApiConstants.baseUrl,
+        headers: {'Content-Type': 'application/json', 'lang': 'en'},
       );
       dio!.interceptors.add(LogInterceptor(
           error: true, request: true, responseBody: true, requestBody: true));

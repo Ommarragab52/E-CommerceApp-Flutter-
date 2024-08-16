@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
-import 'package:flutter_ecommerce_app/core/routing/routes.dart';
-import 'package:flutter_ecommerce_app/features/onboarding/widgets/page_view_item.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../core/helpers/extenstions.dart';
+import '../../core/routing/routes.dart';
+import 'widgets/page_view_item.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -34,7 +35,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 context.pushAndRemoveNamed(
                     Routes.loginScreen, (route) => false);
               },
-              child: Text('Skip'))
+              child: const Text('Skip'))
         ],
       ),
       body: Padding(

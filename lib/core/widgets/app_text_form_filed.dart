@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/theming/colors.dart';
+import '../theming/colors.dart';
 
 class AppTextFormField extends StatelessWidget {
   final bool? isPassword;
@@ -51,7 +51,8 @@ class AppTextFormField extends StatelessWidget {
                   fontWeight: FontWeight.w400),
           enabledBorder: enabledBorder,
           focusedBorder: focusedBorder,
-          errorStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+          errorStyle:
+              const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
     );
   }
 }

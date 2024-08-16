@@ -1,7 +1,7 @@
 class LoginResponse {
   bool? status;
   String? message;
-  dynamic data;
+  UserModel? data;
   LoginResponse({
     this.status,
     this.message,
@@ -10,13 +10,19 @@ class LoginResponse {
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return LoginResponse(
-        status: json['status'], message: json['message'], data: json['data']);
+        status: json['status'],
+        message: json['message'],
+        data: UserModel.fromJson(json['data']));
+  }
+  @override
+  String toString() {
+    return 'status =$status message =$message data =${data.toString()}';
   }
 }
 
 class UserModel {
+  int? id;
   String? name;
-  String? id;
   String? email;
   String? phone;
   String? image;
@@ -37,12 +43,17 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
         id: json['id'],
-        credit: json['credit'],
-        email: json['email'],
-        image: json['image'],
         name: json['name'],
+        email: json['email'],
         phone: json['phone'],
+        image: json['image'],
         points: json['points'],
+        credit: json['credit'],
         token: json['token']);
+  }
+
+  @override
+  String toString() {
+    return 'id =$id credit =$credit email =$email  image =$image name =$name phone =$phone points =$points token =$token';
   }
 }
