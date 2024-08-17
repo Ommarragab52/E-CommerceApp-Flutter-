@@ -4,18 +4,14 @@ import 'dio_factory.dart';
 import '../../features/login/data/models/login_request.dart';
 import '../../features/register/data/models/register_request.dart';
 
-class ApiServices {
-  Future<Response> signIn({required LoginRequest loginRequest}) async {
-    try {
-      var response = await DioFactory.getDio().post(
-        ApiConstants.login,
-        data: loginRequest.toJson(loginRequest),
-      );
-      return response;
-    } catch (error) {
-      rethrow;
-    }
-  }
+@RestApi(baseUrl: ApiConstants.baseUrl)
+abstract class ApiServices {
+  factory ApiServices(DioFactory dioFactory, {String baseUrl}) = _ApiServices;
+
+  @POST(ApiConstants.login)
+  Future<LoginResponse> signIn(
+    @Body() LoginRequest loginRequest,
+  );
 
   Future<Response> signUp({required RegisterRequest registerRequest}) async {
     try {
