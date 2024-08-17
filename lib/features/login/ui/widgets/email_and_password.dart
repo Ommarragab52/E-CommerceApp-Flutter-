@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/widgets/app_text_form_filed.dart';
 import '../../logic/login_cubit.dart';
@@ -29,8 +30,8 @@ class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
                     return 'Please enter a valid email';
                   }
                 }),
-            const SizedBox(
-              height: 8,
+            SizedBox(
+              height: 8.h,
             ),
             AppTextFormField(
                 hintText: 'Password',

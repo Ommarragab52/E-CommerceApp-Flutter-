@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/theming/colors.dart';
 import 'package:flutter_ecommerce_app/core/theming/styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -10,20 +10,21 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 57,
-      width: double.infinity,
-      child: MaterialButton(
-          onPressed: onPressed,
-          shape: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide.none,
+    return FilledButton(
+      style: ButtonStyle(
+        minimumSize: WidgetStatePropertyAll(Size(343.h, 57.w)),
+        padding: const WidgetStatePropertyAll(EdgeInsets.all(16)),
+        shape: const WidgetStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          color: AppColors.mainColor,
-          child: Text(
-            text,
-            style: TextStyles.font14WhiteW700,
-          )),
+        ),
+      ),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyles.font14WhiteW700,
+      ),
     );
   }
 }
