@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theming/colors.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -38,21 +39,26 @@ class AppTextFormField extends StatelessWidget {
       },
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
-          contentPadding: contentPadding ??
-              const EdgeInsetsDirectional.symmetric(
-                  vertical: 13, horizontal: 16),
-          hintText: hintText,
-          prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-          suffixIcon: sufixIcon,
-          hintStyle: hintStyle ??
-              const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400),
-          enabledBorder: enabledBorder,
-          focusedBorder: focusedBorder,
-          errorStyle:
-              const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+        contentPadding: contentPadding ??
+            EdgeInsetsDirectional.symmetric(
+              vertical: 13.w,
+              horizontal: 16.h,
+            ),
+        hintText: hintText,
+        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+        suffixIcon: sufixIcon,
+        hintStyle: hintStyle ??
+            const TextStyle(
+                color: AppColors.grey,
+                fontSize: 12,
+                fontWeight: FontWeight.w400),
+        enabledBorder: enabledBorder,
+        focusedBorder: focusedBorder,
+        errorStyle: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
     );
   }
 }

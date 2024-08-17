@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -16,9 +17,21 @@ class EcommerceApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        initialRoute: Routes.homeScreen,
+        initialRoute: initialRoute(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
+  }
+
+  String initialRoute() {
+    if (isOpenAppFirstTime) {
+      return Routes.onBoardingScreen;
+    } else {
+      if (isLoggedInUser) {
+        return Routes.homeScreen;
+      } else {
+        return Routes.loginScreen;
+      }
+    }
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
+import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
+import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
 
 import '../../../core/networking/api_services.dart';
 import '../data/models/register_request.dart';
@@ -28,6 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         .then(
       (response) {
         if (response.status == true) {
+          updateUserToken(response.data?.token);
           emit(RegisterSuccessState(message: response.message));
         } else {
           emit(RegisterErrorState(message: response.message));
@@ -36,5 +40,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     ).catchError((error) {
       emit(RegisterErrorState(message: error.toString()));
     });
+  }
+
+  void updateUserToken(String? token) async {
+    if (token != null) {
+      await SharedPref.setSecuredString(SheardPrefKeys.userToken, token);
+      DioFactory.addTokenToHeaderAfterLogin(token);
+      debugPrint('User Token Updated!');
+    } else {
+      debugPrint('User Token is Nullable!');
+    }
   }
 }

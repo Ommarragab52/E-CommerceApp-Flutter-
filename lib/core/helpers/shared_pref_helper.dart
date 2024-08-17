@@ -46,7 +46,7 @@ class SharedPref {
   static getBool(String key) async {
     debugPrint('SharedPrefHelper : getBool with key : $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(key) ?? false;
+    return sharedPreferences.getBool(key);
   }
 
   /// Gets a double value from SharedPreferences with given [key].
@@ -81,7 +81,7 @@ class SharedPref {
   /// Gets an String value from FlutterSecureStorage with given [key].
   static getSecuredString(String key) async {
     const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint('FlutterSecureStorage : getSecuredString with key :');
+    debugPrint('FlutterSecureStorage : getSecuredString with key :$key');
     return await flutterSecureStorage.read(key: key) ?? '';
   }
 

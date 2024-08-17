@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
+import 'package:flutter_ecommerce_app/core/routing/routes.dart';
+import 'package:flutter_ecommerce_app/core/widgets/app_snackbar.dart';
 
-import '../../../core/widgets/app_text_button.dart';
+import '../../../core/theming/styles.dart';
+import '../../../core/widgets/app_button.dart';
 import '../logic/login_cubit.dart';
 import '../logic/login_states.dart';
 import 'widgets/email_and_password.dart';
@@ -15,41 +19,75 @@ class LoginScreen extends StatelessWidget {
         appBar: AppBar(),
         body: BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
           if (state is LoginSuccessState) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text('${state.message}')));
+            ScaffoldMessenger.of(context).showSnackBar(
+              appSnackBar(
+                content: state.message ?? 'Success',
+                state: SnackBarState.success,
+              ),
+            );
+            context.pushAndRemoveNamed(
+              Routes.homeScreen,
+              (route) => false,
+            );
           }
           if (state is LoginErrorState) {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text('${state.message}')));
+            ScaffoldMessenger.of(context).showSnackBar(
+              appSnackBar(
+                content: state.message ?? 'Error',
+                state: SnackBarState.error,
+              ),
+            );
           }
         }, builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsetsDirectional.symmetric(
-                horizontal: 20, vertical: 30),
-            child: Column(
-              children: [
-                const LoginTitleText(),
-                const SizedBox(height: 16),
-                const EmailPasswordTextFiled(),
-                const SizedBox(height: 16),
-                Container(
-                    child: (state is LoginLoadingState)
-                        ? const CircularProgressIndicator()
-                        : AppTextButton(
+          return Scaffold(
+              body: SafeArea(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsetsDirectional.only(
+                    start: 20, end: 20, top: 100, bottom: 30),
+                child: Column(
+                  children: [
+                    const LoginTitleText(),
+                    const SizedBox(height: 16),
+                    const EmailPasswordTextFiled(),
+                    const SizedBox(height: 16),
+                    Container(
+                      child: (state is LoginLoadingState)
+                          ? const CircularProgressIndicator()
+                          : AppButton(
+                              onPressed: () {
+                                if (context
+                                    .read<LoginCubit>()
+                                    .formKey
+                                    .currentState!
+                                    .validate()) {
+                                  context.read<LoginCubit>().signIn();
+                                }
+                              },
+                              text: 'Sign In',
+                            ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Don’t have a account?',
+                          style: TextStyles.font12GreyW400,
+                        ),
+                        TextButton(
                             onPressed: () {
-                              if (context
-                                  .read<LoginCubit>()
-                                  .formKey
-                                  .currentState!
-                                  .validate()) {
-                                context.read<LoginCubit>().signIn();
-                              }
+                              context
+                                  .pushReplecmentNamed(Routes.registerScreen);
                             },
-                            text: 'Sign In',
-                          ))
-              ],
+                            child: const Text('Register'))
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-          );
+          ));
         }));
   }
 }
