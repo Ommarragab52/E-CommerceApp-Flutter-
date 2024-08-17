@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
+import 'package:flutter_ecommerce_app/core/routing/routes.dart';
 
 import '../../../core/widgets/app_text_button.dart';
 import '../logic/login_cubit.dart';
@@ -17,6 +19,10 @@ class LoginScreen extends StatelessWidget {
           if (state is LoginSuccessState) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text('${state.message}')));
+            context.pushAndRemoveNamed(
+              Routes.homeScreen,
+              (route) => false,
+            );
           }
           if (state is LoginErrorState) {
             ScaffoldMessenger.of(context)

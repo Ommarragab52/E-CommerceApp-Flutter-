@@ -12,7 +12,9 @@ class RegisterResponse {
     return RegisterResponse(
         status: json['status'],
         message: json['message'],
-        data: UserRegisterModel.fromJson(json['data']));
+        data: json['data'] != null
+            ? UserRegisterModel.fromJson(json['data'])
+            : null);
   }
 }
 

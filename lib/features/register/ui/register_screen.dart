@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
+import 'package:flutter_ecommerce_app/core/routing/routes.dart';
 
 import '../../../core/widgets/app_text_button.dart';
 import '../logic/register_cubit.dart';
@@ -17,6 +19,10 @@ class RegisterScreen extends StatelessWidget {
       if (state is RegisterSuccessState) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text('${state.message}')));
+        context.pushAndRemoveNamed(
+          Routes.loginScreen,
+          (route) => false,
+        );
       }
       if (state is RegisterErrorState) {
         ScaffoldMessenger.of(context)
