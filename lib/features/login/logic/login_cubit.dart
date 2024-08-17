@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
 import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
 import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
-import '../../../core/networking/api_services.dart';
+import '../../../core/networking/api_service.dart';
 import '../data/models/login_request.dart';
 import '../data/repository/login_repository.dart';
 import 'login_states.dart';
@@ -16,7 +16,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   void signIn() {
     emit(LoginLoadingState());
-    var loginRepository = LoginRepository(apiServices: ApiServices());
+    var loginRepository =
+        LoginRepository(apiService: ApiService(DioFactory.getDio()));
     loginRepository
         .signIn(
       loginRequest: LoginRequest(

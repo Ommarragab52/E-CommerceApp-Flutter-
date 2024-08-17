@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'api_constants.dart';
 
 class DioFactory {
@@ -6,7 +7,6 @@ class DioFactory {
 
   //private constrctor
   DioFactory._();
-
   static Dio getDio() {
     if (dio == null) {
       dio = Dio();
@@ -22,8 +22,14 @@ class DioFactory {
   }
 
   static void addDioInterceptor() {
-    dio!.interceptors.add(LogInterceptor(
-        error: true, request: true, responseBody: true, requestBody: true));
+    dio!.interceptors.add(
+      PrettyDioLogger(
+        error: true,
+        request: true,
+        requestBody: true,
+        responseBody: true,
+      ),
+    );
   }
 
   static void addDioHeaders() {

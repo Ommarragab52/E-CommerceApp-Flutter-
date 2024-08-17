@@ -4,7 +4,7 @@ import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
 import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
 import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
 
-import '../../../core/networking/api_services.dart';
+import '../../../core/networking/api_service.dart';
 import '../data/models/register_request.dart';
 import '../data/reopository/register_repository.dart';
 import 'register_state.dart';
@@ -19,7 +19,8 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void signUp() {
     emit(RegisterLoadingState());
-    var registerRepository = RegisterRepository(apiServices: ApiServices());
+    var registerRepository =
+        RegisterRepository(apiService: ApiService(DioFactory.getDio()));
     registerRepository
         .signUp(
       registerRequest: RegisterRequest(

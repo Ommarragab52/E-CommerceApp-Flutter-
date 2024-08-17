@@ -20,12 +20,12 @@ class RegisterRequest {
     );
   }
 
-  Map<String, dynamic> toJson(RegisterRequest registerRequest) {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'email': registerRequest.email,
-      'password': registerRequest.password,
-      'name': registerRequest.name,
-      'phone': registerRequest.phone
+      'email': email,
+      'password': password,
+      'name': name,
+      'phone': phone
     };
   }
 }

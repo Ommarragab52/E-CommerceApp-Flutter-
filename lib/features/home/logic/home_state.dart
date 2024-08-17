@@ -1,5 +1,5 @@
-import '../data/models/banner.dart';
-import '../data/models/product.dart';
+import '../data/models/home_response/banner.dart';
+import '../data/models/home_response/product.dart';
 
 abstract class HomeState {}
 

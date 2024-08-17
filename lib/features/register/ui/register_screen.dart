@@ -8,7 +8,7 @@ import '../../../core/theming/styles.dart';
 import '../../../core/widgets/app_button.dart';
 import '../logic/register_cubit.dart';
 import '../logic/register_state.dart';
-import 'widgets/Register_title_text.dart';
+import 'widgets/register_title_text.dart';
 import 'widgets/register_text_fileds.dart';
 
 class RegisterScreen extends StatelessWidget {

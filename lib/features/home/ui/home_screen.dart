@@ -19,12 +19,12 @@ class HomeScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  Text('Home Screen'),
+                  const Text('Home Screen'),
                   IconButton(
                       onPressed: () {
                         context.read<HomeCubit>().getHomeData();
                       },
-                      icon: Icon(Icons.donut_small_sharp))
+                      icon: const Icon(Icons.donut_small_sharp))
                 ],
               ),
             ),
