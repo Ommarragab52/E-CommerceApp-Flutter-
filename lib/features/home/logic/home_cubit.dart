@@ -12,14 +12,12 @@ class HomeCubit extends Cubit<HomeState> {
     await homeRepository.getHomeData().then(
       (response) async {
         if (response.status == true) {
-          print(response.data?.banners?.first.toJson());
           emit(HomeSuccessState(
             banners: response.data?.banners,
             products: response.data?.products,
             ad: response.data?.ad,
           ));
         } else {
-          print(response.message);
           emit(HomeErrorState(message: response.message));
         }
       },
