@@ -13,4 +13,9 @@ class TextStyles {
     color: AppColors.grey,
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle font14WhiteW700 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
 }

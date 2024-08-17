@@ -46,7 +46,7 @@ class SharedPref {
   static getBool(String key) async {
     debugPrint('SharedPrefHelper : getBool with key : $key');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(key) ?? false;
+    return sharedPreferences.getBool(key);
   }
 
   /// Gets a double value from SharedPreferences with given [key].

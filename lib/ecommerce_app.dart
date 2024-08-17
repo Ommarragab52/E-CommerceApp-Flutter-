@@ -17,9 +17,21 @@ class EcommerceApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
-        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.loginScreen,
+        initialRoute: initialRoute(),
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
+  }
+
+  String initialRoute() {
+    if (isOpenAppFirstTime) {
+      return Routes.onBoardingScreen;
+    } else {
+      if (isLoggedInUser) {
+        return Routes.homeScreen;
+      } else {
+        return Routes.loginScreen;
+      }
+    }
   }
 }

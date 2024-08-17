@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
+import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../core/helpers/extenstions.dart';
@@ -23,6 +25,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   ];
 
   var pageController = PageController();
+  void submit() {
+    SharedPref.setData(SheardPrefKeys.openAppFirstTime, false);
+    context.pushAndRemoveNamed(
+      Routes.loginScreen,
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +41,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         actions: [
           TextButton(
               onPressed: () {
-                context.pushAndRemoveNamed(
-                    Routes.loginScreen, (route) => false);
+                submit();
               },
               child: const Text('Skip'))
         ],
@@ -62,8 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FloatingActionButton(
                 onPressed: () {
                   if (pageController.page == onBoardList.length - 1) {
-                    context.pushAndRemoveNamed(
-                        Routes.loginScreen, (route) => false);
+                    submit();
                   } else {
                     pageController.nextPage(
                         duration: const Duration(milliseconds: 750),

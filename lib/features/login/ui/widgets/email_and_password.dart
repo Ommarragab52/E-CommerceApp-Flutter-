@@ -30,7 +30,7 @@ class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
                   }
                 }),
             const SizedBox(
-              height: 16,
+              height: 8,
             ),
             AppTextFormField(
                 hintText: 'Password',

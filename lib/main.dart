@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
@@ -12,8 +10,8 @@ import 'core/routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+  await isOpenAppForFirstTime();
   await isUserLoggedIn();
-
   runApp(EcommerceApp(
     appRouter: AppRouter(),
   ));
@@ -25,5 +23,14 @@ Future isUserLoggedIn() async {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;
+  }
+}
+
+Future isOpenAppForFirstTime() async {
+  bool? isFirstTime = await SharedPref.getBool(SheardPrefKeys.openAppFirstTime);
+  if (isFirstTime == true || isFirstTime == null) {
+    isOpenAppFirstTime = true;
+  } else {
+    isOpenAppFirstTime = false;
   }
 }
