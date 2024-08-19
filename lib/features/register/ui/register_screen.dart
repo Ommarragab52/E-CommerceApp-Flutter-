@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
+import 'package:flutter_ecommerce_app/core/helpers/space_helper.dart';
 import 'package:flutter_ecommerce_app/core/routing/routes.dart';
 import 'package:flutter_ecommerce_app/core/widgets/app_snackbar.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../core/theming/styles.dart';
 import '../../../core/widgets/app_button.dart';
@@ -26,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         );
         context.pushAndRemoveNamed(
-          Routes.loginScreen,
+          Routes.homeScreen,
           (route) => false,
         );
       }
@@ -44,13 +46,15 @@ class RegisterScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsetsDirectional.only(
-                  start: 20, end: 20, top: 100, bottom: 30),
+                  start: 20, end: 20, top: 112, bottom: 30),
               child: Column(
                 children: [
+                  SvgPicture.asset('assets/images/logo.svg'),
+                  verticalSpace(16),
                   const RegisterTitleText(),
-                  const SizedBox(height: 16),
+                  verticalSpace(28),
                   const RegisterTextFileds(),
-                  const SizedBox(height: 16),
+                  verticalSpace(16),
                   Container(
                     child: (state is RegisterLoadingState)
                         ? const CircularProgressIndicator()
@@ -67,19 +71,22 @@ class RegisterScreen extends StatelessWidget {
                             text: 'Sign Up',
                           ),
                   ),
-                  const SizedBox(height: 8),
+                  verticalSpace(8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Don’t have a account?',
-                        style: TextStyles.font12GreyW400,
+                        style: TextStyles.font12GreyRegular,
                       ),
                       TextButton(
                           onPressed: () {
                             context.pushReplecmentNamed(Routes.loginScreen);
                           },
-                          child: const Text('Sign In'))
+                          child: Text(
+                            'Sign In',
+                            style: TextStyles.font14BlueBold,
+                          ))
                     ],
                   ),
                 ],

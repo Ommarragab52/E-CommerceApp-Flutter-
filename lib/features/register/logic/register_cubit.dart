@@ -4,13 +4,14 @@ import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
 import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
 import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
 
-import '../../../core/networking/api_service.dart';
 import '../data/models/register_request.dart';
 import '../data/reopository/register_repository.dart';
 import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitialState());
+  final RegisterRepository registerRepository;
+  RegisterCubit(this.registerRepository) : super(RegisterInitialState());
+
   var formKey = GlobalKey<FormState>();
   var nameController = TextEditingController();
   var emailController = TextEditingController();
@@ -19,8 +20,6 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void signUp() {
     emit(RegisterLoadingState());
-    var registerRepository =
-        RegisterRepository(apiService: ApiService(DioFactory.getDio()));
     registerRepository
         .signUp(
       registerRequest: RegisterRequest(
@@ -45,7 +44,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void updateUserToken(String? token) async {
     if (token != null) {
-      await SharedPref.setSecuredString(SheardPrefKeys.userToken, token);
+      await SharedPref.setSecuredString(SharedPrefKeys.userToken, token);
       DioFactory.addTokenToHeaderAfterLogin(token);
       debugPrint('User Token Updated!');
     } else {

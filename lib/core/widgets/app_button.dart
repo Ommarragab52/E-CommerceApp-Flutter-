@@ -12,8 +12,8 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FilledButton(
       style: ButtonStyle(
-        minimumSize: WidgetStatePropertyAll(Size(343.h, 57.w)),
         padding: const WidgetStatePropertyAll(EdgeInsets.all(16)),
+        minimumSize: WidgetStatePropertyAll(Size(double.infinity, 57.h)),
         shape: const WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -23,7 +23,7 @@ class AppButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: TextStyles.font14WhiteW700,
+        style: TextStyles.font14WhiteBold,
       ),
     );
   }

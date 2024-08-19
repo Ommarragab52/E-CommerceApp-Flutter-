@@ -5,7 +5,7 @@ import '../models/login_request.dart';
 
 class LoginRepository {
   final ApiService apiService;
-  LoginRepository({required this.apiService});
+  LoginRepository(this.apiService);
 
   Future<LoginResponse> signIn({required LoginRequest loginRequest}) async {
     try {

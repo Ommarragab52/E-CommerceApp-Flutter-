@@ -1,20 +1,11 @@
-import '../data/models/home_response/banner.dart';
-import '../data/models/home_response/product.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class HomeState {}
+part 'home_state.freezed.dart';
 
-class HomeInitialState extends HomeState {}
-
-class HomeLoadingState extends HomeState {}
-
-class HomeSuccessState extends HomeState {
-  List<Banner>? banners;
-  List<Product>? products;
-  String? ad;
-  HomeSuccessState({this.banners, this.products, this.ad});
-}
-
-class HomeErrorState extends HomeState {
-  String? message;
-  HomeErrorState({this.message});
+@freezed
+class HomeState<T> with _$HomeState<T> {
+  const factory HomeState.initial() = _Initial;
+  const factory HomeState.loading() = Loading;
+  const factory HomeState.success(T data) = Success<T>;
+  const factory HomeState.error({required String error}) = Error;
 }

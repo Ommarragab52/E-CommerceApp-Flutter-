@@ -26,7 +26,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   var pageController = PageController();
   void submit() {
-    SharedPref.setData(SheardPrefKeys.openAppFirstTime, false);
+    SharedPref.setData(SharedPrefKeys.openAppFirstTime, false);
     context.pushAndRemoveNamed(
       Routes.loginScreen,
       (route) => false,

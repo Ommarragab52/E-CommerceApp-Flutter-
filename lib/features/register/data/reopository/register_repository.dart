@@ -4,7 +4,7 @@ import '../models/register_response/register_response.dart';
 
 class RegisterRepository {
   final ApiService apiService;
-  RegisterRepository({required this.apiService});
+  RegisterRepository(this.apiService);
 
   Future<RegisterResponse> signUp(
       {required RegisterRequest registerRequest}) async {

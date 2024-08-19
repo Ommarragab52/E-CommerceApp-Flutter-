@@ -91,4 +91,11 @@ class SharedPref {
     const flutterSecureStorage = FlutterSecureStorage();
     await flutterSecureStorage.deleteAll();
   }
+
+  /// Removes a value from FlutterSecureStorage with given [key].
+  static removeSecuredData(String key) async {
+    debugPrint('FlutterSecureStorage : data with key : $key has been removed');
+    const flutterSecureStorage = FlutterSecureStorage();
+    await flutterSecureStorage.delete(key: key);
+  }
 }
