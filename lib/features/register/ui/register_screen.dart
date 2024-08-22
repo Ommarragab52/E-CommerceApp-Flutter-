@@ -77,7 +77,7 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Don’t have a account?',
-                        style: TextStyles.font12GreyRegular,
+                        style: AppTextStyles.font12GreyRegular,
                       ),
                       TextButton(
                           onPressed: () {
@@ -85,7 +85,7 @@ class RegisterScreen extends StatelessWidget {
                           },
                           child: Text(
                             'Sign In',
-                            style: TextStyles.font14BlueBold,
+                            style: AppTextStyles.font14BlueBold,
                           ))
                     ],
                   ),

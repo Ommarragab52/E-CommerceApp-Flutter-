@@ -4,6 +4,8 @@ import 'package:flutter_ecommerce_app/features/home/data/models/home_response/ho
 import 'package:flutter_ecommerce_app/features/login/data/models/login_response/login_response.dart';
 import 'package:flutter_ecommerce_app/features/register/data/models/register_response/register_response.dart';
 import 'package:retrofit/retrofit.dart';
+import '../../features/home/data/models/search_models/porducts_search_request.dart';
+import '../../features/home/data/models/search_models/products_search_response.dart';
 import '../../features/login/data/models/login_request.dart';
 import '../../features/register/data/models/register_request.dart';
 
@@ -21,4 +23,8 @@ abstract class ApiService {
 
   @GET(ApiConstants.home)
   Future<HomeResponse> getHomeData();
+
+  @POST(ApiConstants.productsSearch)
+  Future<ProductsSearchResponse> productsSearchByName(
+      @Body() PorductsSearchRequest porductsSearchRequest);
 }

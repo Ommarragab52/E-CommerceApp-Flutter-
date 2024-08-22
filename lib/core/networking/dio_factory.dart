@@ -34,11 +34,11 @@ class DioFactory {
     );
   }
 
-  static void addDioHeaders() {
+  static void addDioHeaders() async {
     dio!.options.headers = {'Content-Type': 'application/json', 'lang': 'en'};
   }
 
-  static void addTokenToHeaderAfterLogin(String token) {
+  static void addTokenToHeader(String token) {
     dio!.options.headers.addAll({'Authorization': token});
   }
 }

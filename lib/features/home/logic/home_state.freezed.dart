@@ -20,24 +20,43 @@ mixin _$HomeState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
     required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +66,9 @@ mixin _$HomeState<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +77,9 @@ mixin _$HomeState<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +88,9 @@ mixin _$HomeState<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -110,12 +138,18 @@ class __$$InitialImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InitialImpl<T> implements _Initial<T> {
+class _$InitialImpl<T> with DiagnosticableTreeMixin implements _Initial<T> {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState<$T>.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeState<$T>.initial'));
   }
 
   @override
@@ -132,8 +166,17 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
     required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
   }) {
     return initial();
   }
@@ -143,8 +186,13 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
   }) {
     return initial?.call();
   }
@@ -154,8 +202,13 @@ class _$InitialImpl<T> implements _Initial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -171,6 +224,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
   }) {
     return initial(this);
   }
@@ -182,6 +238,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
   }) {
     return initial?.call(this);
   }
@@ -193,6 +252,9 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -227,12 +289,18 @@ class __$$LoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$LoadingImpl<T> implements Loading<T> {
+class _$LoadingImpl<T> with DiagnosticableTreeMixin implements Loading<T> {
   const _$LoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState<$T>.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeState<$T>.loading'));
   }
 
   @override
@@ -249,8 +317,17 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
     required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
   }) {
     return loading();
   }
@@ -260,8 +337,13 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
   }) {
     return loading?.call();
   }
@@ -271,8 +353,13 @@ class _$LoadingImpl<T> implements Loading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -288,6 +375,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
   }) {
     return loading(this);
   }
@@ -299,6 +389,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
   }) {
     return loading?.call(this);
   }
@@ -310,6 +403,9 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -329,7 +425,11 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
           _$SuccessImpl<T> value, $Res Function(_$SuccessImpl<T>) then) =
       __$$SuccessImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({T data});
+  $Res call(
+      {List<BannerModel> banners,
+      List<ProductModel> products,
+      List<ProductModel> saleProducts,
+      String adImage});
 }
 
 /// @nodoc
@@ -345,28 +445,85 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = freezed,
+    Object? banners = null,
+    Object? products = null,
+    Object? saleProducts = null,
+    Object? adImage = null,
   }) {
     return _then(_$SuccessImpl<T>(
-      freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as T,
+      banners: null == banners
+          ? _value._banners
+          : banners // ignore: cast_nullable_to_non_nullable
+              as List<BannerModel>,
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>,
+      saleProducts: null == saleProducts
+          ? _value._saleProducts
+          : saleProducts // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>,
+      adImage: null == adImage
+          ? _value.adImage
+          : adImage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl<T> implements Success<T> {
-  const _$SuccessImpl(this.data);
+class _$SuccessImpl<T> with DiagnosticableTreeMixin implements Success<T> {
+  const _$SuccessImpl(
+      {required final List<BannerModel> banners,
+      required final List<ProductModel> products,
+      required final List<ProductModel> saleProducts,
+      required this.adImage})
+      : _banners = banners,
+        _products = products,
+        _saleProducts = saleProducts;
+
+  final List<BannerModel> _banners;
+  @override
+  List<BannerModel> get banners {
+    if (_banners is EqualUnmodifiableListView) return _banners;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_banners);
+  }
+
+  final List<ProductModel> _products;
+  @override
+  List<ProductModel> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  final List<ProductModel> _saleProducts;
+  @override
+  List<ProductModel> get saleProducts {
+    if (_saleProducts is EqualUnmodifiableListView) return _saleProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_saleProducts);
+  }
 
   @override
-  final T data;
+  final String adImage;
 
   @override
-  String toString() {
-    return 'HomeState<$T>.success(data: $data)';
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState<$T>.success(banners: $banners, products: $products, saleProducts: $saleProducts, adImage: $adImage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState<$T>.success'))
+      ..add(DiagnosticsProperty('banners', banners))
+      ..add(DiagnosticsProperty('products', products))
+      ..add(DiagnosticsProperty('saleProducts', saleProducts))
+      ..add(DiagnosticsProperty('adImage', adImage));
   }
 
   @override
@@ -374,12 +531,20 @@ class _$SuccessImpl<T> implements Success<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl<T> &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other._banners, _banners) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._saleProducts, _saleProducts) &&
+            (identical(other.adImage, adImage) || other.adImage == adImage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_banners),
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_saleProducts),
+      adImage);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -394,10 +559,19 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
     required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
   }) {
-    return success(data);
+    return success(banners, products, saleProducts, adImage);
   }
 
   @override
@@ -405,10 +579,15 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
   }) {
-    return success?.call(data);
+    return success?.call(banners, products, saleProducts, adImage);
   }
 
   @override
@@ -416,12 +595,17 @@ class _$SuccessImpl<T> implements Success<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(data);
+      return success(banners, products, saleProducts, adImage);
     }
     return orElse();
   }
@@ -433,6 +617,9 @@ class _$SuccessImpl<T> implements Success<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
   }) {
     return success(this);
   }
@@ -444,6 +631,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
   }) {
     return success?.call(this);
   }
@@ -455,6 +645,9 @@ class _$SuccessImpl<T> implements Success<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -465,9 +658,16 @@ class _$SuccessImpl<T> implements Success<T> {
 }
 
 abstract class Success<T> implements HomeState<T> {
-  const factory Success(final T data) = _$SuccessImpl<T>;
+  const factory Success(
+      {required final List<BannerModel> banners,
+      required final List<ProductModel> products,
+      required final List<ProductModel> saleProducts,
+      required final String adImage}) = _$SuccessImpl<T>;
 
-  T get data;
+  List<BannerModel> get banners;
+  List<ProductModel> get products;
+  List<ProductModel> get saleProducts;
+  String get adImage;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -511,15 +711,23 @@ class __$$ErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ErrorImpl<T> implements Error<T> {
+class _$ErrorImpl<T> with DiagnosticableTreeMixin implements Error<T> {
   const _$ErrorImpl({required this.error});
 
   @override
   final String error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'HomeState<$T>.error(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState<$T>.error'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -546,8 +754,17 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(T data) success,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
     required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
   }) {
     return error(this.error);
   }
@@ -557,8 +774,13 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(T data)? success,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
   }) {
     return error?.call(this.error);
   }
@@ -568,8 +790,13 @@ class _$ErrorImpl<T> implements Error<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(T data)? success,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
     TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -585,6 +812,9 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function(Loading<T> value) loading,
     required TResult Function(Success<T> value) success,
     required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
   }) {
     return error(this);
   }
@@ -596,6 +826,9 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function(Loading<T> value)? loading,
     TResult? Function(Success<T> value)? success,
     TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
   }) {
     return error?.call(this);
   }
@@ -607,6 +840,9 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function(Loading<T> value)? loading,
     TResult Function(Success<T> value)? success,
     TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -625,5 +861,553 @@ abstract class Error<T> implements HomeState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchLoadingImplCopyWith<T, $Res> {
+  factory _$$SearchLoadingImplCopyWith(_$SearchLoadingImpl<T> value,
+          $Res Function(_$SearchLoadingImpl<T>) then) =
+      __$$SearchLoadingImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$SearchLoadingImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$SearchLoadingImpl<T>>
+    implements _$$SearchLoadingImplCopyWith<T, $Res> {
+  __$$SearchLoadingImplCopyWithImpl(_$SearchLoadingImpl<T> _value,
+      $Res Function(_$SearchLoadingImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SearchLoadingImpl<T>
+    with DiagnosticableTreeMixin
+    implements SearchLoading<T> {
+  const _$SearchLoadingImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState<$T>.searchLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'HomeState<$T>.searchLoading'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SearchLoadingImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
+    required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
+  }) {
+    return searchLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
+  }) {
+    return searchLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchLoading != null) {
+      return searchLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
+  }) {
+    return searchLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
+  }) {
+    return searchLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchLoading != null) {
+      return searchLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchLoading<T> implements HomeState<T> {
+  const factory SearchLoading() = _$SearchLoadingImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$SearchSuccessImplCopyWith<T, $Res> {
+  factory _$$SearchSuccessImplCopyWith(_$SearchSuccessImpl<T> value,
+          $Res Function(_$SearchSuccessImpl<T>) then) =
+      __$$SearchSuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({List<ProductModel> productSearchList});
+}
+
+/// @nodoc
+class __$$SearchSuccessImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$SearchSuccessImpl<T>>
+    implements _$$SearchSuccessImplCopyWith<T, $Res> {
+  __$$SearchSuccessImplCopyWithImpl(_$SearchSuccessImpl<T> _value,
+      $Res Function(_$SearchSuccessImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productSearchList = null,
+  }) {
+    return _then(_$SearchSuccessImpl<T>(
+      productSearchList: null == productSearchList
+          ? _value._productSearchList
+          : productSearchList // ignore: cast_nullable_to_non_nullable
+              as List<ProductModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchSuccessImpl<T>
+    with DiagnosticableTreeMixin
+    implements SearchSuccess<T> {
+  const _$SearchSuccessImpl(
+      {required final List<ProductModel> productSearchList})
+      : _productSearchList = productSearchList;
+
+  final List<ProductModel> _productSearchList;
+  @override
+  List<ProductModel> get productSearchList {
+    if (_productSearchList is EqualUnmodifiableListView)
+      return _productSearchList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productSearchList);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState<$T>.searchSuccess(productSearchList: $productSearchList)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState<$T>.searchSuccess'))
+      ..add(DiagnosticsProperty('productSearchList', productSearchList));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchSuccessImpl<T> &&
+            const DeepCollectionEquality()
+                .equals(other._productSearchList, _productSearchList));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_productSearchList));
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchSuccessImplCopyWith<T, _$SearchSuccessImpl<T>> get copyWith =>
+      __$$SearchSuccessImplCopyWithImpl<T, _$SearchSuccessImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
+    required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
+  }) {
+    return searchSuccess(productSearchList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
+  }) {
+    return searchSuccess?.call(productSearchList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchSuccess != null) {
+      return searchSuccess(productSearchList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
+  }) {
+    return searchSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
+  }) {
+    return searchSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchSuccess != null) {
+      return searchSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchSuccess<T> implements HomeState<T> {
+  const factory SearchSuccess(
+          {required final List<ProductModel> productSearchList}) =
+      _$SearchSuccessImpl<T>;
+
+  List<ProductModel> get productSearchList;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchSuccessImplCopyWith<T, _$SearchSuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchErrorImplCopyWith<T, $Res> {
+  factory _$$SearchErrorImplCopyWith(_$SearchErrorImpl<T> value,
+          $Res Function(_$SearchErrorImpl<T>) then) =
+      __$$SearchErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$SearchErrorImplCopyWithImpl<T, $Res>
+    extends _$HomeStateCopyWithImpl<T, $Res, _$SearchErrorImpl<T>>
+    implements _$$SearchErrorImplCopyWith<T, $Res> {
+  __$$SearchErrorImplCopyWithImpl(
+      _$SearchErrorImpl<T> _value, $Res Function(_$SearchErrorImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$SearchErrorImpl<T>(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchErrorImpl<T>
+    with DiagnosticableTreeMixin
+    implements SearchError<T> {
+  const _$SearchErrorImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeState<$T>.searchError(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeState<$T>.searchError'))
+      ..add(DiagnosticsProperty('error', error));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchErrorImpl<T> &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchErrorImplCopyWith<T, _$SearchErrorImpl<T>> get copyWith =>
+      __$$SearchErrorImplCopyWithImpl<T, _$SearchErrorImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(
+            List<BannerModel> banners,
+            List<ProductModel> products,
+            List<ProductModel> saleProducts,
+            String adImage)
+        success,
+    required TResult Function(String error) error,
+    required TResult Function() searchLoading,
+    required TResult Function(List<ProductModel> productSearchList)
+        searchSuccess,
+    required TResult Function(String error) searchError,
+  }) {
+    return searchError(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult? Function(String error)? error,
+    TResult? Function()? searchLoading,
+    TResult? Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult? Function(String error)? searchError,
+  }) {
+    return searchError?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<BannerModel> banners, List<ProductModel> products,
+            List<ProductModel> saleProducts, String adImage)?
+        success,
+    TResult Function(String error)? error,
+    TResult Function()? searchLoading,
+    TResult Function(List<ProductModel> productSearchList)? searchSuccess,
+    TResult Function(String error)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchError != null) {
+      return searchError(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial<T> value) initial,
+    required TResult Function(Loading<T> value) loading,
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Error<T> value) error,
+    required TResult Function(SearchLoading<T> value) searchLoading,
+    required TResult Function(SearchSuccess<T> value) searchSuccess,
+    required TResult Function(SearchError<T> value) searchError,
+  }) {
+    return searchError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial<T> value)? initial,
+    TResult? Function(Loading<T> value)? loading,
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Error<T> value)? error,
+    TResult? Function(SearchLoading<T> value)? searchLoading,
+    TResult? Function(SearchSuccess<T> value)? searchSuccess,
+    TResult? Function(SearchError<T> value)? searchError,
+  }) {
+    return searchError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial<T> value)? initial,
+    TResult Function(Loading<T> value)? loading,
+    TResult Function(Success<T> value)? success,
+    TResult Function(Error<T> value)? error,
+    TResult Function(SearchLoading<T> value)? searchLoading,
+    TResult Function(SearchSuccess<T> value)? searchSuccess,
+    TResult Function(SearchError<T> value)? searchError,
+    required TResult orElse(),
+  }) {
+    if (searchError != null) {
+      return searchError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchError<T> implements HomeState<T> {
+  const factory SearchError({required final String error}) =
+      _$SearchErrorImpl<T>;
+
+  String get error;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchErrorImplCopyWith<T, _$SearchErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

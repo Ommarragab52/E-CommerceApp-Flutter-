@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'colors.dart';
 
 ThemeData lightTheme = ThemeData(
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: AppColors.mainColor,
     ),
-    appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+    appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: Colors.white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+          systemNavigationBarColor: Colors.white,
+        )),
     inputDecorationTheme: InputDecorationTheme(
-      prefixIconColor: WidgetStateColor.resolveWith(
-        (states) {
-          if (states.contains(WidgetState.error)) {
-            return Colors.red;
-          } else if (states.contains(WidgetState.focused)) {
-            return AppColors.mainColor;
-          } else {
-            return AppColors.grey;
-          }
-        },
-      ),
       suffixIconColor: WidgetStateColor.resolveWith(
         (states) {
           if (states.contains(WidgetState.error)) {
