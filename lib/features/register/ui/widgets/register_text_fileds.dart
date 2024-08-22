@@ -74,6 +74,7 @@ class _RegisterTextFiledsState extends State<RegisterTextFileds> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter a name';
                 }
+                return null;
               },
             ),
             verticalSpace(16),
@@ -88,6 +89,7 @@ class _RegisterTextFiledsState extends State<RegisterTextFileds> {
                       !AppRegex.isEmailValid(value)) {
                     return 'Please enter a valid email';
                   }
+                  return null;
                 }),
             verticalSpace(16),
             AppTextFormField(
@@ -101,6 +103,7 @@ class _RegisterTextFiledsState extends State<RegisterTextFileds> {
                     !AppRegex.isPhoneNumberValid(value)) {
                   return 'Please enter a valid phone number';
                 }
+                return null;
               },
             ),
             verticalSpace(16),
@@ -126,6 +129,7 @@ class _RegisterTextFiledsState extends State<RegisterTextFileds> {
                   if (value == null || value.isEmpty || !isPasswordValid()) {
                     return 'Please enter a valid password';
                   }
+                  return null;
                 }),
             verticalSpace(8),
             showPasswordValidation

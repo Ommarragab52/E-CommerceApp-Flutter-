@@ -77,6 +77,7 @@ class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
                       !AppRegex.isEmailValid(value)) {
                     return 'Please enter a valid email';
                   }
+                  return null;
                 }),
             SizedBox(
               height: 8.h,
@@ -109,6 +110,7 @@ class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
                   if (value == null || value.isEmpty || !isPasswordValid()) {
                     return 'Please enter a valid password';
                   }
+                  return null;
                 }),
             verticalSpace(8),
             showPasswordValidation

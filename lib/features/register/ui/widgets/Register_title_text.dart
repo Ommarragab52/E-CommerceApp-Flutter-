@@ -9,8 +9,8 @@ class RegisterTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Let’s Get Started', style: TextStyles.font16DarkBold),
-        Text('Create an new account', style: TextStyles.font12GreyRegular),
+        Text('Let’s Get Started', style: AppTextStyles.font16DarkBold),
+        Text('Create an new account', style: AppTextStyles.font12GreyRegular),
       ],
     );
   }

@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
   void updateUserToken(String? token) async {
     if (token != null) {
       await SharedPref.setSecuredString(SharedPrefKeys.userToken, token);
-      DioFactory.addTokenToHeaderAfterLogin(token);
+      DioFactory.addTokenToHeader(token);
       debugPrint('User Token Updated!');
     } else {
       debugPrint('User Token is Nullable!');

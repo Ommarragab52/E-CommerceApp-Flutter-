@@ -54,7 +54,6 @@ dependencies:
   flutter_svg: ^2.0.10+1
   # for adapting screen and font size.
   flutter_screenutil: ^5.9.3
-  firebase_core: ^3.3.0
   # reading and writing simple key-value pairs
   shared_preferences: ^2.3.2
   # provides API to store data in secure storage.
@@ -63,7 +62,8 @@ dependencies:
   shimmer: ^3.0.0
   # a Flutter package that provides a set of animated page indicators with a variety of effects.
   smooth_page_indicator: ^1.2.0+3
-
+  # cache image in local after load from network
+  cached_network_image: ^3.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

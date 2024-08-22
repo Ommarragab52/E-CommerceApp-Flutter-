@@ -10,11 +10,16 @@ class AppTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
   final IconData? prefixIcon;
+  final Color? prefixIconColor;
   final Widget? sufixIcon;
+  final bool? readOnly;
+  final bool? autofocus;
   final EdgeInsetsGeometry? contentPadding;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
-  final Function(String?) validator;
+  final String? Function(String?)? validator;
+  final Function(String?)? onChanged;
+
   final VoidCallback? onTap;
 
   const AppTextFormField(
@@ -23,14 +28,18 @@ class AppTextFormField extends StatelessWidget {
       required this.hintText,
       this.controller,
       this.keyboardType,
-      required this.validator,
+      this.validator,
       this.hintStyle,
       this.enabledBorder,
       this.focusedBorder,
       this.contentPadding,
       this.prefixIcon,
       this.sufixIcon,
-      this.onTap});
+      this.onTap,
+      this.autofocus,
+      this.prefixIconColor,
+      this.readOnly,
+      this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +47,13 @@ class AppTextFormField extends StatelessWidget {
       onTap: onTap,
       controller: controller,
       keyboardType: keyboardType,
-      validator: (value) {
-        return validator(value);
-      },
-      style: TextStyles.font14GreyBold,
+      validator: validator,
+      readOnly: readOnly ?? false,
+      style: AppTextStyles.font14GreyBold,
       obscureText: isPassword ?? false,
+      autofocus: autofocus ?? false,
       textAlignVertical: TextAlignVertical.center,
+      onChanged: onChanged,
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsetsDirectional.symmetric(vertical: 13.w, horizontal: 13.h),
@@ -52,7 +62,19 @@ class AppTextFormField extends StatelessWidget {
         alignLabelWithHint: true,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         suffixIcon: sufixIcon,
-        hintStyle: hintStyle ?? TextStyles.font12GreyRegular,
+        prefixIconColor: prefixIconColor ??
+            WidgetStateColor.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.error)) {
+                  return Colors.red;
+                } else if (states.contains(WidgetState.focused)) {
+                  return AppColors.mainColor;
+                } else {
+                  return AppColors.grey;
+                }
+              },
+            ),
+        hintStyle: hintStyle ?? AppTextStyles.font12GreyRegular,
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
@@ -60,7 +82,7 @@ class AppTextFormField extends StatelessWidget {
                   const BorderSide(color: AppColors.light, strokeAlign: 1),
             ),
         focusedBorder: focusedBorder,
-        errorStyle: TextStyles.font12RedBold,
+        errorStyle: AppTextStyles.font12RedBold,
       ),
     );
   }
