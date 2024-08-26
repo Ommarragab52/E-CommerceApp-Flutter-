@@ -8,9 +8,9 @@ import '../../../../core/helpers/space_helper.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../core/widgets/app_button.dart';
 
-class ErrorWidget extends StatelessWidget {
+class HomeErrorWidget extends StatelessWidget {
   final String error;
-  const ErrorWidget({super.key, required this.error});
+  const HomeErrorWidget({super.key, required this.error});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,8 @@ class ErrorWidget extends StatelessWidget {
           ),
           Text(
             error,
-            style: AppTextStyles.font24DarkBold,
+            style: AppTextStyles.font20DarkBold,
+            textAlign: TextAlign.center,
           ),
           verticalSpace(16),
           AppButton(

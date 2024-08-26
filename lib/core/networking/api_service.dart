@@ -23,8 +23,9 @@ abstract class ApiService {
 
   @GET(ApiConstants.home)
   Future<HomeResponse> getHomeData();
-
+  
   @POST(ApiConstants.productsSearch)
   Future<ProductsSearchResponse> productsSearchByName(
       @Body() PorductsSearchRequest porductsSearchRequest);
+
 }

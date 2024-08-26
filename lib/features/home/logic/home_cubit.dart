@@ -37,7 +37,7 @@ class HomeCubit extends Cubit<HomeState> {
         ));
       },
       failure: (e) {
-        emit(HomeState.error(error: e));
+        emit(HomeState.error(error: e.message ?? 'Unknown error occured'));
       },
     );
   }
@@ -73,7 +73,8 @@ class HomeCubit extends Cubit<HomeState> {
         emit(HomeState.searchSuccess(productSearchList: productsSearchList));
       },
       failure: (error) {
-        emit(HomeState.searchError(error: error));
+        emit(HomeState.searchError(
+            error: error.message ?? 'Unknown error occured'));
       },
     );
   }

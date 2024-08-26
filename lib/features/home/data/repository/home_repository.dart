@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce_app/core/networking/api_error_handler.dart';
 import 'package:flutter_ecommerce_app/core/networking/api_result.dart';
 import 'package:flutter_ecommerce_app/features/home/data/models/search_models/products_search_response.dart';
 import '../../../../core/networking/api_service.dart';
@@ -14,10 +15,10 @@ class HomeRepository {
       if (response.status == true) {
         return ApiResult.success(response);
       } else {
-        return ApiResult.failure(error: response.message ?? 'Error');
+        return ApiResult.failure(error: ApiErrorHandler.handleError(response));
       }
     } catch (error) {
-      return ApiResult.failure(error: error.toString());
+      return ApiResult.failure(error: ApiErrorHandler.handleError(error));
     }
   }
 
@@ -26,9 +27,13 @@ class HomeRepository {
     try {
       var response =
           await apiService.productsSearchByName(porductsSearchRequest);
-      return ApiResult.success(response);
+      if (response.status == true) {
+        return ApiResult.success(response);
+      } else {
+        return ApiResult.failure(error: ApiErrorHandler.handleError(response));
+      }
     } catch (e) {
-      return ApiResult.failure(error: e.toString());
+      return ApiResult.failure(error: ApiErrorHandler.handleError(e));
     }
   }
 }

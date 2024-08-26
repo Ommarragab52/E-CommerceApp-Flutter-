@@ -26,6 +26,9 @@ Map<String, dynamic> _$ProductsSearchResponseToJson(
 
 SearchModel _$SearchModelFromJson(Map<String, dynamic> json) => SearchModel(
       currentPage: (json['currentPage'] as num?)?.toInt(),
+      productsList: (json['data'] as List<dynamic>?)
+          ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       firstPageUrl: json['firstPageUrl'] as String?,
       from: (json['from'] as num?)?.toInt(),
       lastPage: (json['lastPage'] as num?)?.toInt(),
@@ -36,9 +39,7 @@ SearchModel _$SearchModelFromJson(Map<String, dynamic> json) => SearchModel(
       prevPageUrl: json['prevPageUrl'],
       to: (json['to'] as num?)?.toInt(),
       total: (json['total'] as num?)?.toInt(),
-    )..productsList = (json['data'] as List<dynamic>?)
-        ?.map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    );
 
 Map<String, dynamic> _$SearchModelToJson(SearchModel instance) =>
     <String, dynamic>{
