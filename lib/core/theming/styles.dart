@@ -4,8 +4,8 @@ import 'package:flutter_ecommerce_app/core/theming/font_weight_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyles {
-  static TextStyle font24DarkBold = TextStyle(
-      fontSize: 24.sp,
+  static TextStyle font20DarkBold = TextStyle(
+      fontSize: 20.sp,
       color: AppColors.darkBlue,
       fontWeight: FontWeightHelper.bold);
   static TextStyle font16DarkBold = TextStyle(
@@ -33,6 +33,7 @@ class AppTextStyles {
       fontSize: 14.sp,
       color: AppColors.mainColor,
       fontWeight: FontWeightHelper.bold);
+
   static TextStyle font14BlueRegualr = TextStyle(
       fontSize: 14.sp,
       color: AppColors.mainColor,
@@ -75,6 +76,11 @@ class AppTextStyles {
   static TextStyle font10RedBold = TextStyle(
     fontSize: 10.sp,
     color: Colors.red,
+    fontWeight: FontWeightHelper.bold,
+  );
+  static TextStyle font10MainBold = TextStyle(
+    fontSize: 10.sp,
+    color: AppColors.mainColor,
     fontWeight: FontWeightHelper.bold,
   );
 }

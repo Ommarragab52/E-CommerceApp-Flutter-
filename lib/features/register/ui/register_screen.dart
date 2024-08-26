@@ -28,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         );
         context.pushAndRemoveNamed(
-          Routes.homeScreen,
+          Routes.homeLayout,
           (route) => false,
         );
       }

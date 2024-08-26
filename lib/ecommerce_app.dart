@@ -14,7 +14,7 @@ class EcommerceApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp(
+      builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         initialRoute: initialRoute(),
@@ -28,7 +28,7 @@ class EcommerceApp extends StatelessWidget {
       return Routes.onBoardingScreen;
     } else {
       if (isLoggedInUser) {
-        return Routes.homeScreen;
+        return Routes.homeLayout;
       } else {
         return Routes.loginScreen;
       }

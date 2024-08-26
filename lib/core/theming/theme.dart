@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'colors.dart';
+import 'styles.dart';
 
 ThemeData lightTheme = ThemeData(
     snackBarTheme: const SnackBarThemeData(
@@ -15,6 +16,12 @@ ThemeData lightTheme = ThemeData(
           systemNavigationBarIconBrightness: Brightness.dark,
           systemNavigationBarColor: Colors.white,
         )),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        showUnselectedLabels: true,
+        selectedItemColor: AppColors.mainColor,
+        selectedLabelStyle: AppTextStyles.font10MainBold,
+        unselectedItemColor: AppColors.grey,
+        unselectedLabelStyle: AppTextStyles.font10GreyRegular),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: WidgetStateColor.resolveWith(
         (states) {

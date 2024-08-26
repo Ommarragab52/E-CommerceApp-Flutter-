@@ -10,19 +10,17 @@ class LoadingWidegt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          // show banners shimmer
-          bannersShimmer(),
-          verticalSpace(24),
-          // show products Shimmer
-          productsShimmer(),
-          verticalSpace(24),
-          // show image Ad Shimmer
-          imageAdShimmer()
-        ],
-      ),
+    return Column(
+      children: [
+        // show banners shimmer
+        bannersShimmer(),
+        verticalSpace(24),
+        // show products Shimmer
+        productsShimmer(),
+        verticalSpace(24),
+        // show image Ad Shimmer
+        imageAdShimmer()
+      ],
     );
   }
 
