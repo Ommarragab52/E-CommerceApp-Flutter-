@@ -11,13 +11,13 @@ class SaleProductsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250.h,
+      height: 230.h,
       child: ListView.builder(
         itemCount: products.length,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) => ProductsItemView(
-          height: 245,
+          height: 230,
           width: 145,
           productModel: products[index],
         ),

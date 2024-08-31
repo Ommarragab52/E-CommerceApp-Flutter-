@@ -11,7 +11,7 @@ class LoginResponse {
   Data? data;
 
   LoginResponse({this.status, this.message, this.data});
-  
+
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
     return _$LoginResponseFromJson(json);
   }

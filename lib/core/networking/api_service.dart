@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_ecommerce_app/core/networking/api_constants.dart';
+import 'package:flutter_ecommerce_app/features/category/data/models/category_response.dart';
 import 'package:flutter_ecommerce_app/features/home/data/models/home_response/home_response.dart';
 import 'package:flutter_ecommerce_app/features/login/data/models/login_response/login_response.dart';
 import 'package:flutter_ecommerce_app/features/register/data/models/register_response/register_response.dart';
@@ -23,9 +24,13 @@ abstract class ApiService {
 
   @GET(ApiConstants.home)
   Future<HomeResponse> getHomeData();
-  
+
   @POST(ApiConstants.productsSearch)
   Future<ProductsSearchResponse> productsSearchByName(
       @Body() PorductsSearchRequest porductsSearchRequest);
 
+  @GET(ApiConstants.categories)
+  Future<CategoryResponse> getCategories(
+    @Query('page') int? page,
+  );
 }

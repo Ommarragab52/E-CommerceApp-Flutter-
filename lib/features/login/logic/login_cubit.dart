@@ -9,7 +9,7 @@ import 'login_states.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository loginRepository;
-  
+
   LoginCubit(this.loginRepository) : super(LoginInitialState());
 
   var formKey = GlobalKey<FormState>();

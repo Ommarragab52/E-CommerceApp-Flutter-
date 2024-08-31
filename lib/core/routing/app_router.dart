@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/di/dpendency_injection.dart';
+import 'package:flutter_ecommerce_app/features/category/logic/category_cubit.dart';
+import 'package:flutter_ecommerce_app/features/category/ui/category_screen.dart';
 import 'package:flutter_ecommerce_app/features/home/logic/home_cubit.dart';
+import 'package:flutter_ecommerce_app/features/home/logic/home_state.dart';
+import 'package:flutter_ecommerce_app/features/home/ui/home_screen.dart';
 import 'package:flutter_ecommerce_app/features/home_layout/home_layout.dart';
 import 'package:flutter_ecommerce_app/features/home/ui/search_screen/search_screen.dart';
 
@@ -34,7 +38,19 @@ class AppRouter {
 
       case Routes.homeLayout:
         return MaterialPageRoute(
-          builder: (context) => const HomeLayout(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider<HomeCubit>(
+                create: (context) => getIt<HomeCubit>()..getHomeData(),
+                child: const HomeScreen(),
+              ),
+              BlocProvider<CategoryCubit>(
+                create: (context) => getIt<CategoryCubit>()..getCategories(),
+                child: const CategoryScreen(),
+              )
+            ],
+            child: const HomeLayout(),
+          ),
         );
 
       case Routes.searchScreen:

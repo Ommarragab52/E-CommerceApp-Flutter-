@@ -10,16 +10,13 @@ class ProductsListGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
+    return SliverGrid.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Number of items per row
-        childAspectRatio: 0.7, // Ratio of width to height
+        childAspectRatio: 0.8, // Ratio of width to height
         mainAxisSpacing: 12.h, // Vertical space between items
       ),
       itemCount: products.length,
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => ProductsItemView(
         height: 282,
         width: 165,
