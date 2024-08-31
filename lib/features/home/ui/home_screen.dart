@@ -26,12 +26,12 @@ class HomeScreen extends StatelessWidget {
             FavoriteAndNotifactions()
           ],
         ),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Container(
-            width: double.infinity,
-            margin: const EdgeInsetsDirectional.all(16),
-            child: state.whenOrNull(
+        body: Container(
+          width: double.infinity,
+          margin: const EdgeInsetsDirectional.all(16),
+          child: CustomScrollView(
+            slivers: [
+              state.maybeWhen(
                 loading: () => const LoadingWidegt(),
                 success: (banners, products, saleProducts, adImage) =>
                     SuccessWidget(
@@ -39,9 +39,11 @@ class HomeScreen extends StatelessWidget {
                         products: products,
                         saleProductsList: saleProducts,
                         adImage: adImage),
-                error: (error) => HomeErrorWidget(
-                      error: error,
-                    )),
+                error: (error) => HomeErrorWidget(error: error),
+                orElse: () =>
+                    const SliverToBoxAdapter(child: SizedBox.shrink()),
+              )
+            ],
           ),
         ),
       ),

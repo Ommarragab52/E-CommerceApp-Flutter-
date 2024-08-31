@@ -23,33 +23,40 @@ class SuccessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // show banners in Page View
-        BannersPageView(bannersList: banners),
-        verticalSpace(24),
-        const ProductsSeeMoreText(
-          label: 'Flash Sale',
+    return SliverFillRemaining(
+      child: CustomScrollView(slivers: [
+        SliverToBoxAdapter(child: BannersPageView(bannersList: banners)),
+        SliverToBoxAdapter(child: verticalSpace(24)),
+        SliverToBoxAdapter(
+          child: const ProductsSeeMoreText(
+            label: 'Flash Sale',
+          ),
         ),
         // show Sale products list
-        SaleProductsListView(
-          products: saleProductsList,
+        SliverToBoxAdapter(
+          child: SaleProductsListView(
+            products: saleProductsList,
+          ),
         ),
-        verticalSpace(24),
+        SliverToBoxAdapter(child: verticalSpace(24)),
         // show ad image
-        CachedNetworkImage(
-          imageUrl: adImage,
-          width: 343.w,
-          height: 206.h,
-          filterQuality: FilterQuality.low,
+        SliverToBoxAdapter(
+          child: CachedNetworkImage(
+            imageUrl: adImage,
+            width: 343.w,
+            height: 206.h,
+            filterQuality: FilterQuality.low,
+          ),
         ),
-        verticalSpace(24),
-        const ProductsSeeMoreText(
-          label: 'Products',
+        SliverToBoxAdapter(child: verticalSpace(24)),
+        SliverToBoxAdapter(
+          child: const ProductsSeeMoreText(
+            label: 'Products',
+          ),
         ),
         // show  products list
         ProductsListGridView(products: products),
-      ],
+      ]),
     );
   }
 }
