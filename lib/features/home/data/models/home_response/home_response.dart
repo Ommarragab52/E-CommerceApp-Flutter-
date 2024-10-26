@@ -1,3 +1,4 @@
+import 'package:flutter_ecommerce_app/features/products/data/models/product_response/products_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'home_response.g.dart';
@@ -46,40 +47,4 @@ class BannerModel {
   }
 
   Map<String, dynamic> toJson() => _$BannerModelToJson(this);
-}
-
-@JsonSerializable()
-class ProductModel {
-  int? id;
-  double? price;
-  @JsonKey(name: 'old_price')
-  double? oldPrice;
-  int? discount;
-  String? image;
-  String? name;
-  String? description;
-  List<String>? images;
-  @JsonKey(name: 'in_favorites')
-  bool? inFavorites;
-  @JsonKey(name: 'in_cart')
-  bool? inCart;
-
-  ProductModel({
-    this.id,
-    this.price,
-    this.oldPrice,
-    this.discount,
-    this.image,
-    this.name,
-    this.description,
-    this.images,
-    this.inFavorites,
-    this.inCart,
-  });
-
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
-    return _$ProductModelFromJson(json);
-  }
-
-  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }

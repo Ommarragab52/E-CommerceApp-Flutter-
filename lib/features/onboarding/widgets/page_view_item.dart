@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 
 Widget buildPageItem(String imagePath, String title, String description) {
   return Padding(
@@ -15,14 +16,13 @@ Widget buildPageItem(String imagePath, String title, String description) {
         const SizedBox(height: 20),
         Text(
           title,
-          style: const TextStyle(
-              fontFamily: 'Jannah', fontSize: 24, fontWeight: FontWeight.bold),
+          style: AppStyles.styleJannaBold24,
         ),
         const SizedBox(height: 10),
         Text(
           description,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontFamily: 'Jannah', fontSize: 16),
+          style: AppStyles.styleJannaBold16,
         ),
       ],
     ),

@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'colors.dart';
-import 'styles.dart';
+import 'app_colors.dart';
+import 'app_styles.dart';
 
 ThemeData lightTheme = ThemeData(
     snackBarTheme: const SnackBarThemeData(
-      backgroundColor: AppColors.mainColor,
+      backgroundColor: AppColors.primaryBlue,
     ),
+    navigationBarTheme: NavigationBarThemeData(
+        labelTextStyle: WidgetStateTextStyle.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return AppStyles.captionnormalbold;
+      } else {
+        return AppStyles.captionnormalregular;
+      }
+    })),
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
@@ -16,30 +24,24 @@ ThemeData lightTheme = ThemeData(
           systemNavigationBarIconBrightness: Brightness.dark,
           systemNavigationBarColor: Colors.white,
         )),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        showUnselectedLabels: true,
-        selectedItemColor: AppColors.mainColor,
-        selectedLabelStyle: AppTextStyles.font10MainBold,
-        unselectedItemColor: AppColors.grey,
-        unselectedLabelStyle: AppTextStyles.font10GreyRegular),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: WidgetStateColor.resolveWith(
         (states) {
           if (states.contains(WidgetState.error)) {
             return Colors.red;
           } else if (states.contains(WidgetState.focused)) {
-            return AppColors.mainColor;
+            return AppColors.primaryBlue;
           } else {
-            return AppColors.grey;
+            return AppColors.neutralGrey;
           }
         },
       ),
       focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          borderSide: BorderSide(color: AppColors.mainColor, width: 1)),
+          borderSide: BorderSide(color: AppColors.primaryBlue, width: 1)),
       border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          borderSide: BorderSide(color: AppColors.grey, width: 1)),
+          borderSide: BorderSide(color: AppColors.neutralGrey, width: 1)),
       errorBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(5)),
           borderSide: BorderSide(color: Colors.red, width: 1)),
@@ -50,7 +52,7 @@ ThemeData lightTheme = ThemeData(
     ),
     colorScheme: ColorScheme(
         brightness: Brightness.light,
-        primary: AppColors.mainColor,
+        primary: AppColors.primaryBlue,
         onPrimary: const Color.fromARGB(255, 255, 255, 255),
         secondary: Colors.blue.shade400,
         onSecondary: Colors.white,

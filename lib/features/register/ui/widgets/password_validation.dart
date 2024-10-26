@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/core/helpers/space_helper.dart';
 
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../core/theming/app_colors.dart';
+import '../../../../core/theming/app_styles.dart';
 
 class PasswordValidation extends StatelessWidget {
   final bool hasLowerCase;
@@ -38,14 +38,16 @@ class PasswordValidation extends StatelessWidget {
       return Row(
         children: [
           CircleAvatar(
-            backgroundColor: isValidCase ? AppColors.grey : Colors.red.shade400,
+            backgroundColor:
+                isValidCase ? AppColors.neutralGrey : AppColors.primaryRed,
             radius: 3,
           ),
           horizontalSpace(2),
           Text(
             text,
-            style: AppTextStyles.font12GreyRegular.copyWith(
-                color: isValidCase ? AppColors.grey : Colors.red.shade400,
+            style: AppStyles.captionLargeRegular.copyWith(
+                color:
+                    isValidCase ? AppColors.neutralGrey : AppColors.primaryRed,
                 decoration: isValidCase ? TextDecoration.lineThrough : null,
                 decorationColor: Colors.green,
                 decorationThickness: isValidCase ? 2 : null),

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
+import 'package:flutter_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
 import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
 import '../data/models/login_request.dart';

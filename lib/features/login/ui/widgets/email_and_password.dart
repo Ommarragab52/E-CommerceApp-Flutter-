@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/helpers/app_regex.dart';
+import 'package:flutter_ecommerce_app/core/utils/app_regex.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helpers/space_helper.dart';
@@ -18,7 +18,6 @@ class EmailPasswordTextFiled extends StatefulWidget {
 class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
   var isPassword = true;
   bool showPasswordValidation = false;
-
   bool hasLowerCase = false;
   bool hasUpperCase = false;
   bool hasSpecialCharacter = false;
@@ -123,11 +122,5 @@ class _EmailPasswordTextFiledState extends State<EmailPasswordTextFiled> {
                 : const SizedBox.shrink(),
           ],
         ));
-  }
-
-  @override
-  void dispose() {
-    passwordColtroller.dispose();
-    super.dispose();
   }
 }

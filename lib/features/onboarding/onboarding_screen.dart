@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
-import 'package:flutter_ecommerce_app/core/helpers/shared_pref_helper.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../core/helpers/extenstions.dart';
-import '../../core/routing/routes.dart';
 import 'widgets/page_view_item.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -15,13 +11,22 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  List<Widget> onBoardList = [
-    buildPageItem('assets/images/onboarding1.png', 'Welcome to our app!',
-        'Discover new features and enjoy our services.'),
-    buildPageItem('assets/images/onboarding2.png', 'Easy to use',
-        'Our app is designed to be intuitive and user-friendly.'),
-    buildPageItem('assets/images/onboarding3.png', 'Stay connected',
-        'Stay updated with our latest news and promotions.'),
+  List<Widget> onBoardingList = [
+    buildPageItem(
+      Assets.imagesOnboarding1,
+      'Welcome to our app!',
+      'Discover new features and enjoy our services.',
+    ),
+    buildPageItem(
+      Assets.imagesOnboarding2,
+      'Easy to use',
+      'Our app is designed to be intuitive and user-friendly.',
+    ),
+    buildPageItem(
+      Assets.imagesOnboarding3,
+      'Stay connected',
+      'Stay updated with our latest news and promotions.',
+    ),
   ];
 
   var pageController = PageController();
@@ -54,7 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               controller: pageController,
               onPageChanged: (index) {},
               physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) => onBoardList[index],
+              itemBuilder: (context, index) => onBoardingList[index],
               itemCount: 3,
             ),
           ),
@@ -62,14 +67,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             children: [
               SmoothPageIndicator(
                 controller: pageController,
-                count: onBoardList.length,
+                count: onBoardingList.length,
                 onDotClicked: (index) {},
                 effect: const ExpandingDotsEffect(),
               ),
               const Spacer(),
               FloatingActionButton(
                 onPressed: () {
-                  if (pageController.page == onBoardList.length - 1) {
+                  if (pageController.page == onBoardingList.length - 1) {
                     submit();
                   } else {
                     pageController.nextPage(

@@ -1,13 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/features/category/data/models/category_response.dart';
-import 'package:flutter_ecommerce_app/features/category/data/repository/category_repository.dart';
-import 'package:flutter_ecommerce_app/features/category/logic/category_state.dart';
+import 'package:flutter_ecommerce_app/features/category/export.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
   final CategoryRepository categoryRepository;
   CategoryCubit(this.categoryRepository) : super(const CategoryState.initial());
 
   List<CategoryModel> categories = [];
+  List<ProductModel> products = [];
 
   void getCategories() async {
     emit(const CategoryState.loading());

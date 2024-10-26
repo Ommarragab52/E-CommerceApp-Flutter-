@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/helpers/space_helper.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../core/theming/app_styles.dart';
 import '../../../../core/widgets/app_button.dart';
 
 class HomeErrorWidget extends StatelessWidget {
@@ -26,15 +26,16 @@ class HomeErrorWidget extends StatelessWidget {
             ),
             Text(
               error,
-              style: AppTextStyles.font20DarkBold,
+              style: AppStyles.bodyTextLargeBold,
               textAlign: TextAlign.center,
             ),
             verticalSpace(16),
             AppButton(
-                onPressed: () {
-                  context.read<HomeCubit>().getHomeData();
-                },
-                text: 'Try Again')
+              onPressed: () {
+                context.read<HomeCubit>().getHomeData();
+              },
+              text: 'Try Again',
+            )
           ],
         ),
       ),

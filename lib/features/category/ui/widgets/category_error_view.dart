@@ -1,12 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/features/category/logic/category_cubit.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
+import 'package:flutter_ecommerce_app/features/category/export.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/helpers/space_helper.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../core/widgets/app_button.dart';
 
 class CategoryErrorView extends StatelessWidget {
   final String errorMessage;
@@ -25,7 +22,7 @@ class CategoryErrorView extends StatelessWidget {
           ),
           Text(
             errorMessage,
-            style: AppTextStyles.font20DarkBold,
+            style: AppStyles.bodyTextLargeBold,
             textAlign: TextAlign.center,
           ),
           verticalSpace(16),

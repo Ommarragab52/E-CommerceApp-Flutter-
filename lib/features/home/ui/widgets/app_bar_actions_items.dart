@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
-import 'package:flutter_ecommerce_app/core/widgets/app_text_form_filed.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 
-import '../../../../core/routing/routes.dart';
-import '../../../../core/theming/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppBarSearchField extends StatelessWidget {
   const AppBarSearchField({super.key});
@@ -17,8 +14,8 @@ class AppBarSearchField extends StatelessWidget {
         hintText: 'Search Product',
         readOnly: true,
         autofocus: false,
-        onTap: () => context.pushNamed(Routes.searchScreen),
-        prefixIconColor: AppColors.mainColor,
+        onTap: () => context.pushNamed(Routes.productsSearchScreen),
+        prefixIconColor: AppColors.primaryBlue,
         prefixIcon: Icons.search,
       ),
     );
@@ -37,7 +34,7 @@ class FavoriteAndNotifactions extends StatelessWidget {
           icon: const Icon(
             Icons.favorite_outline,
             size: 24,
-            color: AppColors.grey,
+            color: AppColors.neutralGrey,
           ),
         ),
         IconButton(
@@ -45,7 +42,7 @@ class FavoriteAndNotifactions extends StatelessWidget {
           icon: const Icon(
             Icons.notifications_outlined,
             size: 24,
-            color: AppColors.grey,
+            color: AppColors.neutralGrey,
           ),
         )
       ],
