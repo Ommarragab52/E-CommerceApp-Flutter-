@@ -16,14 +16,17 @@ ThemeData lightTheme = ThemeData(
       }
     })),
     appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.transparent,
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.dark,
-          statusBarColor: Colors.white,
-          systemNavigationBarIconBrightness: Brightness.dark,
-          systemNavigationBarColor: Colors.white,
-        )),
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarDividerColor: Colors.white,
+      ),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       suffixIconColor: WidgetStateColor.resolveWith(
         (states) {

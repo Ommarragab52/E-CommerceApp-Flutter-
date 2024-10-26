@@ -6,4 +6,3 @@ export 'logic/category_cubit.dart';
 export 'ui/widgets/categories_list/categories_list_gird_view.dart';
 export 'ui/widgets/category_error_view.dart';
 export 'ui/widgets/category_loading_view.dart';
-export 'package:flutter_ecommerce_app/features/home/ui/widgets/app_bar_actions_items.dart';

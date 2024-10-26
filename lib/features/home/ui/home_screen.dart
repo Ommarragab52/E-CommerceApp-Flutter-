@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/features/home/export.dart';
-import 'widgets/app_bar_actions_items.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -9,15 +9,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Expanded(child: AppBarSearchField()),
-          FavoriteAndNotifactions()
-        ],
-      ),
       body: Container(
         width: double.infinity,
-        margin: const EdgeInsetsDirectional.all(16),
+        margin: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
         child: CustomScrollView(
           slivers: [
             // show Banners

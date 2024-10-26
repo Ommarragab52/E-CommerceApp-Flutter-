@@ -9,12 +9,6 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: const [
-          Expanded(child: AppBarSearchField()),
-          FavoriteAndNotifactions()
-        ],
-      ),
       body: Container(
         width: double.infinity,
         margin: const EdgeInsetsDirectional.all(16),
