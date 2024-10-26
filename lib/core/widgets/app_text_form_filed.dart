@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../theming/colors.dart';
-import '../theming/styles.dart';
+import '../theming/app_colors.dart';
+import '../theming/app_styles.dart';
 
 class AppTextFormField extends StatelessWidget {
   final bool? isPassword;
@@ -49,7 +49,7 @@ class AppTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       readOnly: readOnly ?? false,
-      style: AppTextStyles.font14GreyBold,
+      style: AppStyles.bodyTextMediumBold,
       obscureText: isPassword ?? false,
       autofocus: autofocus ?? false,
       textAlignVertical: TextAlignVertical.center,
@@ -68,21 +68,23 @@ class AppTextFormField extends StatelessWidget {
                 if (states.contains(WidgetState.error)) {
                   return Colors.red;
                 } else if (states.contains(WidgetState.focused)) {
-                  return AppColors.mainColor;
+                  return AppColors.primaryBlue;
                 } else {
-                  return AppColors.grey;
+                  return AppColors.neutralGrey;
                 }
               },
             ),
-        hintStyle: hintStyle ?? AppTextStyles.font12GreyRegular,
+        hintStyle: hintStyle ?? AppStyles.bodyTextNormalRegular,
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
-              borderSide:
-                  const BorderSide(color: AppColors.light, strokeAlign: 1),
+              borderSide: const BorderSide(
+                  color: AppColors.neutralLight, strokeAlign: 1),
             ),
         focusedBorder: focusedBorder,
-        errorStyle: AppTextStyles.font12RedBold,
+        errorStyle: AppStyles.bodyTextNormalBold.copyWith(
+          color: AppColors.primaryRed,
+        ),
       ),
     );
   }

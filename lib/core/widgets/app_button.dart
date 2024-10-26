@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/theming/styles.dart';
+import 'package:flutter_ecommerce_app/core/theming/app_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppButton extends StatelessWidget {
@@ -23,7 +23,7 @@ class AppButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: AppTextStyles.font14WhiteBold,
+        style: AppStyles.buttonText,
       ),
     );
   }

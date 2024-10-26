@@ -1,8 +1,8 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ecommerce_app/core/helpers/constants.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/routing/app_router.dart';
-import 'core/routing/routes.dart';
 import 'core/theming/theme.dart';
 
 class EcommerceApp extends StatelessWidget {
@@ -16,6 +16,8 @@ class EcommerceApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         theme: lightTheme,
         initialRoute: initialRoute(),
         onGenerateRoute: appRouter.generateRoute,
@@ -24,11 +26,11 @@ class EcommerceApp extends StatelessWidget {
   }
 
   String initialRoute() {
-    if (isOpenAppFirstTime) {
+    if (isOpenAppForFirstTime) {
       return Routes.onBoardingScreen;
     } else {
       if (isLoggedInUser) {
-        return Routes.homeLayout;
+        return Routes.homeLayoutScreen;
       } else {
         return Routes.loginScreen;
       }

@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/helpers/extenstions.dart';
-import 'package:flutter_ecommerce_app/core/helpers/space_helper.dart';
-import 'package:flutter_ecommerce_app/core/routing/routes.dart';
-import 'package:flutter_ecommerce_app/core/widgets/app_snackbar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../core/theming/styles.dart';
-import '../../../core/widgets/app_button.dart';
-import '../logic/login_cubit.dart';
-import '../logic/login_states.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'widgets/email_and_password.dart';
 import 'widgets/login_title_text.dart';
+import 'package:flutter_ecommerce_app/features/login/logic/login_cubit.dart';
+import 'package:flutter_ecommerce_app/features/login/logic/login_states.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -27,7 +20,7 @@ class LoginScreen extends StatelessWidget {
             ),
           );
           context.pushAndRemoveNamed(
-            Routes.homeLayout,
+            Routes.homeLayoutScreen,
             (route) => false,
           );
         }
@@ -41,59 +34,64 @@ class LoginScreen extends StatelessWidget {
         }
       },
       builder: (context, state) => Scaffold(
-          body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsetsDirectional.only(
-                start: 20, end: 20, top: 112, bottom: 30),
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/images/logo.svg'),
-                verticalSpace(16),
-                const LoginTitleText(),
-                verticalSpace(28),
-                const EmailPasswordTextFiled(),
-                verticalSpace(16),
-                Container(
-                  child: (state is LoginLoadingState)
-                      ? const CircularProgressIndicator()
-                      : AppButton(
-                          onPressed: () {
-                            if (context
-                                .read<LoginCubit>()
-                                .formKey
-                                .currentState!
-                                .validate()) {
-                              context.read<LoginCubit>().signIn();
-                            }
-                          },
-                          text: 'Sign In',
-                        ),
-                ),
-                verticalSpace(8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don’t have a account?',
-                      style: AppTextStyles.font12GreyRegular,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.pushReplecmentNamed(Routes.registerScreen);
-                      },
-                      child: Text(
-                        'Register',
-                        style: AppTextStyles.font14BlueBold,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsetsDirectional.only(
+                  start: 20, end: 20, top: 112, bottom: 30),
+              child: Column(
+                children: [
+                  Image.asset(
+                    Assets.imagesLogo,
+                    height: 70,
+                    width: 70,
+                  ),
+                  verticalSpace(16),
+                  const LoginTitleText(),
+                  verticalSpace(28),
+                  const EmailPasswordTextFiled(),
+                  verticalSpace(16),
+                  Container(
+                    child: (state is LoginLoadingState)
+                        ? const CircularProgressIndicator()
+                        : AppButton(
+                            onPressed: () {
+                              if (context
+                                  .read<LoginCubit>()
+                                  .formKey
+                                  .currentState!
+                                  .validate()) {
+                                context.read<LoginCubit>().signIn();
+                              }
+                            },
+                            text: 'Sign In',
+                          ),
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Don’t have a account?',
+                        style: AppStyles.bodyTextNormalBold,
                       ),
-                    )
-                  ],
-                ),
-              ],
+                      TextButton(
+                        onPressed: () {
+                          context.pushReplecmentNamed(Routes.registerScreen);
+                        },
+                        child: Text(
+                          'Register',
+                          style: AppStyles.bodyTextNormalBold,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

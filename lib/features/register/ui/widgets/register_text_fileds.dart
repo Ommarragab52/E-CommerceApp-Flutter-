@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/features/login/ui/widgets/password_validation.dart';
 
-import '../../../../core/helpers/app_regex.dart';
+import '../../../../core/utils/app_regex.dart';
 import '../../../../core/helpers/space_helper.dart';
 import '../../../../core/widgets/app_text_form_filed.dart';
 import '../../logic/register_cubit.dart';

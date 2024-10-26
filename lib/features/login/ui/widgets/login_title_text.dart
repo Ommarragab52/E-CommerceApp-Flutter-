@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theming/styles.dart';
+import '../../../../core/theming/app_styles.dart';
 
 class LoginTitleText extends StatelessWidget {
   const LoginTitleText({super.key});
@@ -9,8 +9,8 @@ class LoginTitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Welcome Back', style: AppTextStyles.font16DarkBold),
-        Text('Sign in to continue', style: AppTextStyles.font12GreyRegular),
+        Text('Welcome Back', style: AppStyles.headingH4),
+        Text('Sign in to continue', style: AppStyles.bodyTextNormalRegular),
       ],
     );
   }
