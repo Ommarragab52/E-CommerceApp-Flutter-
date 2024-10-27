@@ -14,7 +14,7 @@ class BannerListViewItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           child: CachedNetworkImage(
             imageUrl: banner?.image ?? '',
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
             filterQuality: FilterQuality.low,
           )),
     );

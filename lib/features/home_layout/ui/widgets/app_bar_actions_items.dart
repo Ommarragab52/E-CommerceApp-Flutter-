@@ -11,9 +11,14 @@ class AppBarSearchField extends StatelessWidget {
     return Padding(
       padding: EdgeInsetsDirectional.symmetric(vertical: 4.h, horizontal: 16.w),
       child: AppTextFormField(
-        hintText: 'Search Product',
+        hintText: 'Search Products',
         readOnly: true,
         autofocus: false,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(5),
+          borderSide:
+              const BorderSide(color: AppColors.neutralLight, strokeAlign: 1),
+        ),
         onTap: () => context.pushNamed(Routes.productsSearchScreen),
         prefixIconColor: AppColors.primaryBlue,
         prefixIcon: Icons.search,

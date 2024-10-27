@@ -13,8 +13,6 @@ class SaleProductsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.sizeOf(context);
-
     return BlocBuilder<ProductsCubit, ProductsState>(
       buildWhen: (previous, current) {
         return current.status == ProductsStateStatus.productsLoading ||
@@ -25,7 +23,7 @@ class SaleProductsWidget extends StatelessWidget {
         // Show shimmer loading
         if (state.status == ProductsStateStatus.productsLoading) {
           return SizedBox(
-            height: 230.h,
+            height: 244.h,
             child: ListView.builder(
               itemCount: 3,
               scrollDirection: Axis.horizontal,
@@ -43,7 +41,7 @@ class SaleProductsWidget extends StatelessWidget {
           final saleProducts = state.saleProductsList;
 
           return SizedBox(
-            height: 238.h,
+            height: 244.h,
             child: ListView.builder(
               itemCount: saleProducts?.length,
               scrollDirection: Axis.horizontal,

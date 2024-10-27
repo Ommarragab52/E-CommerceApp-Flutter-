@@ -49,8 +49,4 @@ abstract class ApiService {
     @Query('page') int? page,
     @Query('name') @Body() PorductsSearchRequest porductsSearchRequest,
   );
-
-  // Banners
-  // @GET(ApiConstants.categories)
-  // Future<BannersResponse> getBanners();
 }

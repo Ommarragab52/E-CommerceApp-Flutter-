@@ -59,12 +59,12 @@ class ProductsSearchScreen extends StatelessWidget {
     return SizedBox(
       height: double.infinity,
       child: ListView.builder(
-        itemCount: 12,
+        itemCount: 6,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: Shimmer.fromColors(
-            baseColor: Colors.grey.shade300,
-            highlightColor: Colors.grey.shade400,
+            baseColor: Colors.grey.shade200,
+            highlightColor: Colors.grey.shade300,
             child: Container(
               width: double.infinity,
               height: 35,

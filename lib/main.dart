@@ -24,7 +24,7 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: false,
+      enabled: true,
       builder: (BuildContext context) {
         return EcommerceApp(appRouter: AppRouter());
       },

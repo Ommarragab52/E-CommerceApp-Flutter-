@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/products_search_cubit/products_search_cubit.dart';
-import '../../../../../core/theming/app_colors.dart';
-import '../../../../../core/widgets/app_text_form_filed.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({super.key});
@@ -17,14 +16,18 @@ class _SearchTextFieldState extends State<SearchTextField> {
     final searchCubit = context.read<ProductsSearchCubit>();
     return AppTextFormField(
       controller: searchCubit.searchController,
-      hintText: 'Search Product',
+      hintText: 'Search Products',
       prefixIcon: Icons.search,
       autofocus: true,
       prefixIconColor: AppColors.primaryBlue,
       sufixIcon: GestureDetector(
         onTap: () {
           // remove data from Cotroller
-          searchCubit.clearSearch();
+          if (searchCubit.searchController.text.isNotEmpty) {
+            searchCubit.clearSearch();
+          } else {
+            context.pop();
+          }
         },
         child: const Icon(
           Icons.clear,

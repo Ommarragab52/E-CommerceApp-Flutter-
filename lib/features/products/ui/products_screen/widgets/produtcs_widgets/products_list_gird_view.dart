@@ -15,6 +15,7 @@ class ProductsListGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.sizeOf(context);
     return BlocBuilder<ProductsCubit, ProductsState>(
         buildWhen: (previous, current) {
       return current.status == ProductsStateStatus.productsLoading ||
@@ -26,13 +27,13 @@ class ProductsListGridView extends StatelessWidget {
         return SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisExtent: 238.h,
-            crossAxisCount: 2,
+            crossAxisCount: screenSize.width > 400 ? 4 : 2,
             mainAxisSpacing: 13.h,
             crossAxisSpacing: 12.w,
           ),
           delegate: SliverChildBuilderDelegate(
             (context, index) => const PorductShimmerLoading(),
-            childCount: 6,
+            childCount: screenSize.width > 400 ? 8 : 4,
           ),
         );
       }
@@ -46,8 +47,8 @@ class ProductsListGridView extends StatelessWidget {
         final products = state.productsList;
         return SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 238.h,
-            crossAxisCount: 2,
+            mainAxisExtent: 244.h,
+            crossAxisCount: screenSize.width > 400 ? 4 : 2,
             mainAxisSpacing: 13.h,
             crossAxisSpacing: 12.w,
           ),

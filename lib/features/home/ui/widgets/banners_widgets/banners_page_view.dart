@@ -59,7 +59,7 @@ class _BannersPageViewState extends State<BannersPageView> {
     return Column(
       children: [
         SizedBox(
-          height: 206,
+          height: 206.h,
           width: double.infinity,
           child: PageView.builder(
             controller: pageController,

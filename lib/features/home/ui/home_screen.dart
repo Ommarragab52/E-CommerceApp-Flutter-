@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/features/home/export.dart';
+import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productsCubit = context.read<ProductsCubit>();
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -16,10 +19,16 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             // show Banners
             const SliverToBoxAdapter(child: BannersWidget()),
-            const SliverToBoxAdapter(
+
+            SliverToBoxAdapter(
               child: CustomTextTitleAndButton(
                 label: 'Flash Sale',
                 haveButton: true,
+                onPressed: () {
+                  if (!productsCubit.state.saleProductsList.isNullOrEmpty()) {
+                    context.pushNamed(Routes.productsScreen);
+                  }
+                },
               ),
             ),
             // show sale products
@@ -35,7 +44,9 @@ class HomeScreen extends StatelessWidget {
                 label: 'Products',
                 haveButton: true,
                 onPressed: () {
-                  context.pushNamed(Routes.productsScreen);
+                  if (!productsCubit.state.productsList.isNullOrEmpty()) {
+                    context.pushNamed(Routes.productsScreen);
+                  }
                 },
               ),
             ),

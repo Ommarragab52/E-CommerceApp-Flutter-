@@ -26,6 +26,7 @@ class CategoryItemView extends StatelessWidget {
           leading: CachedNetworkImage(
             imageUrl: categoryModel?.image ?? '',
             filterQuality: FilterQuality.low,
+            width: 80.w,
             placeholder: (context, url) => _buildLoadingCategoryShimmer(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
@@ -34,7 +35,9 @@ class CategoryItemView extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             textAlign: TextAlign.center,
-            style: AppStyles.captionnormalregular,
+            style: AppStyles.captionnormalbold.copyWith(
+              color: AppColors.neutralDark,
+            ),
           ),
         ),
       ),
@@ -46,8 +49,8 @@ class CategoryItemView extends StatelessWidget {
         baseColor: AppColors.neutralLight,
         highlightColor: Colors.white,
         child: Container(
-          width: 109.w,
-          height: 109.h,
+          width: 80.w,
+          height: 80.h,
           decoration: BoxDecoration(
               color: AppColors.neutralLight,
               borderRadius: BorderRadius.circular(12)),
