@@ -13,8 +13,7 @@ class ProductsSearchRepository {
     int? page,
   }) async {
     try {
-      var response =
-          await apiService.getProductsByName(page, porductsSearchRequest);
+      var response = await apiService.getProductsByName(porductsSearchRequest);
       if (response.status == true) {
         return ApiResult.success(response);
       } else {

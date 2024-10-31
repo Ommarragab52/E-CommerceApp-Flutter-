@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/utils/app_constants.dart';
 import 'package:flutter_ecommerce_app/core/utils/app_extenstions.dart';
 import 'package:flutter_ecommerce_app/core/widgets/porduct_shimmer_loading.dart';
-
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/produtcs_widgets/product_item_view.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_states.dart';
@@ -50,6 +50,12 @@ class SaleProductsWidget extends StatelessWidget {
                 padding: EdgeInsets.only(left: index == 0 ? 0 : 8.w),
                 child: ProductItemView(
                   productModel: saleProducts?[index],
+                  onProductClick: () {
+                    context.pushNamed(
+                      Routes.productDetailsScreen,
+                      arguments: saleProducts?[index].id,
+                    );
+                  },
                 ),
               ),
             ),

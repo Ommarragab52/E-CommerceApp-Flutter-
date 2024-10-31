@@ -14,30 +14,28 @@ class HomeErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/images/not_found.svg',
-              width: 120.w,
-              height: 120.h,
-            ),
-            Text(
-              error,
-              style: AppStyles.bodyTextLargeBold,
-              textAlign: TextAlign.center,
-            ),
-            verticalSpace(16),
-            AppButton(
-              onPressed: () {
-                context.read<HomeCubit>().getHomeData();
-              },
-              text: 'Try Again',
-            )
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            'assets/images/not_found.svg',
+            width: 120.w,
+            height: 120.h,
+          ),
+          Text(
+            error,
+            style: AppStyles.bodyTextLargeBold,
+            textAlign: TextAlign.center,
+          ),
+          verticalSpace(16),
+          AppButton(
+            onPressed: () {
+              context.read<HomeCubit>().getHomeData();
+            },
+            text: 'Try Again',
+          )
+        ],
       ),
     );
   }

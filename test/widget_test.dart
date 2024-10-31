@@ -7,13 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/ecommerce_app.dart';
-import 'package:flutter_ecommerce_app/core/routing/app_router.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(EcommerceApp(appRouter: AppRouter()));
+    await tester.pumpWidget(const EcommerceApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

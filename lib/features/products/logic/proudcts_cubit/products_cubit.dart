@@ -5,7 +5,12 @@ import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/pro
 
 class ProductsCubit extends Cubit<ProductsState> {
   final ProductsRepository _productsRepository;
-  ProductsCubit(this._productsRepository) : super(ProductsState.initial);
+  ProductsCubit(
+    this._productsRepository,
+  ) : super(ProductsState.initial);
+
+  List<ProductModel>? products = [];
+  List<ProductModel>? productsByCategoryList = [];
 
   void getProducts({
     int? categoryId,
@@ -19,30 +24,44 @@ class ProductsCubit extends Cubit<ProductsState> {
     );
     apiResult.when(
       success: (response) {
-        final products = response.productsData?.productsList ?? [];
-
+        if (categoryId != null) {
+          productsByCategoryList = response.productsData?.productsList ?? [];
+        } else {
+          products = response.productsData?.productsList ?? [];
+        }
         emit(
           state.copyWith(
-              status: ProductsStateStatus.productsSuccess,
-              productsList: products,
-              saleProductsList: getSaleProducts(productsList: products)),
+            status: ProductsStateStatus.productsSuccess,
+            productsList: getProductsList(products),
+            saleProductsList: getSaleProducts(products),
+            productsByCategoryList: productsByCategoryList,
+          ),
         );
       },
       failure: (error) {
-        emit(state.copyWith(
-            status: ProductsStateStatus.productsError,
-            errorMessage: error.message ?? 'Unknown error occured'));
+        emit(
+          state.copyWith(
+              status: ProductsStateStatus.productsError,
+              errorMessage: error.message ?? 'Unknown error occured'),
+        );
       },
     );
   }
 
-  List<ProductModel> getSaleProducts({
+  List<ProductModel> getSaleProducts(
     List<ProductModel>? productsList,
-  }) {
+  ) {
     return productsList
             ?.where(
                 (product) => product.discount != null && product.discount! > 0)
             .toList() ??
+        [];
+  }
+
+  List<ProductModel> getProductsList(
+    List<ProductModel>? productsList,
+  ) {
+    return productsList?.where((product) => product.discount! == 0).toList() ??
         [];
   }
 }

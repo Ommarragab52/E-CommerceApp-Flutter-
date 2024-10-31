@@ -5,7 +5,6 @@ import 'package:flutter_ecommerce_app/core/utils/startup_methods.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/utils/my_bloc_observer.dart';
 import 'ecommerce_app.dart';
-import 'core/routing/app_router.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() async {
@@ -24,9 +23,9 @@ void main() async {
 
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (BuildContext context) {
-        return EcommerceApp(appRouter: AppRouter());
+        return const EcommerceApp();
       },
     ),
   );
