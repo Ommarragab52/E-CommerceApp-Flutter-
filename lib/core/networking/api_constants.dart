@@ -6,4 +6,5 @@ class ApiConstants {
   static const productsSearch = 'products/search';
   static const categories = 'categories';
   static const products = 'products';
+  static const favorites = 'favorites';
 }

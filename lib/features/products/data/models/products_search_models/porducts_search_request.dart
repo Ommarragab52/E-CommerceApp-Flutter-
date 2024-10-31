@@ -4,6 +4,6 @@ class PorductsSearchRequest {
   PorductsSearchRequest({required this.text});
 
   Map<String, dynamic> toJson() {
-    return <String, dynamic>{'email': text};
+    return <String, dynamic>{'text': text};
   }
 }

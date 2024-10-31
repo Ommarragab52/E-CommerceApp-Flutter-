@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_ecommerce_app/core/utils/app_extenstions.dart';
-import 'package:flutter_ecommerce_app/core/widgets/porduct_shimmer_loading.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_states.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/products_error_view.dart';
@@ -45,6 +44,7 @@ class ProductsListGridView extends StatelessWidget {
           return const SliverToBoxAdapter(child: SizedBox.shrink());
         }
         final products = state.productsList;
+
         return SliverGrid(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             mainAxisExtent: 244.h,
@@ -55,6 +55,12 @@ class ProductsListGridView extends StatelessWidget {
           delegate: SliverChildBuilderDelegate(
             (context, index) => ProductItemView(
               productModel: products?[index],
+              onProductClick: () {
+                context.pushNamed(
+                  Routes.productDetailsScreen,
+                  arguments: products?[index].id,
+                );
+              },
             ),
             childCount: products?.length,
           ),

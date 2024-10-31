@@ -3,6 +3,8 @@ import 'package:flutter_ecommerce_app/core/networking/api_service.dart';
 import 'package:flutter_ecommerce_app/core/networking/dio_factory.dart';
 import 'package:flutter_ecommerce_app/features/category/data/repository/category_repository.dart';
 import 'package:flutter_ecommerce_app/features/category/logic/category_cubit.dart';
+import 'package:flutter_ecommerce_app/features/favorites/data/repos/favorites_repository.dart';
+import 'package:flutter_ecommerce_app/features/favorites/logic/favorites_cubit.dart';
 import 'package:flutter_ecommerce_app/features/home/data/repository/home_repository.dart';
 import 'package:flutter_ecommerce_app/features/products/data/repos/products_search_repository.dart';
 import 'package:flutter_ecommerce_app/features/home/logic/home_cubit.dart';
@@ -53,7 +55,7 @@ class ServiceLocator {
     // products
     getIt.registerLazySingleton<ProductsRepository>(
         () => ProductsRepository(getIt()));
-    getIt.registerFactory<ProductsCubit>(() => ProductsCubit(getIt()));
+    getIt.registerLazySingleton<ProductsCubit>(() => ProductsCubit(getIt()));
 
     // product details
     getIt.registerLazySingleton<ProductDetailsRepository>(
@@ -61,11 +63,18 @@ class ServiceLocator {
     getIt.registerFactory<ProductDetailsCubit>(
         () => ProductDetailsCubit(getIt()));
     // products search
-
     getIt.registerLazySingleton<ProductsSearchRepository>(
         () => ProductsSearchRepository(getIt()));
     getIt.registerFactory<ProductsSearchCubit>(
         () => ProductsSearchCubit(getIt()));
+
+    // favorites
+    getIt.registerLazySingleton<FavoritesRepository>(
+      () => FavoritesRepository(getIt()),
+    );
+    getIt.registerLazySingleton<FavoritesCubit>(
+      () => FavoritesCubit(getIt()),
+    );
   }
 
   static HomeLayoutCubit get homeLayoutCubit => getIt<HomeLayoutCubit>();
@@ -79,4 +88,5 @@ class ServiceLocator {
 
   static ProductsSearchCubit get productsSearchCubit =>
       getIt<ProductsSearchCubit>();
+  static FavoritesCubit get favoritesCubit => getIt<FavoritesCubit>();
 }

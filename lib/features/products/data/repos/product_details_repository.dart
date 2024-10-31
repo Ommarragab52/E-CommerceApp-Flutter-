@@ -8,7 +8,7 @@ class ProductDetailsRepository {
   ProductDetailsRepository(this.apiService);
 
   Future<ApiResult<ProductDetailsResponse>> getProductById(
-      {required int productId}) async {
+      int productId) async {
     try {
       final response = await apiService.getProductById(productId);
       if (response.status == true) {

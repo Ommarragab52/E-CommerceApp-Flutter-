@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_ecommerce_app/core/networking/api_constants.dart';
 import 'package:flutter_ecommerce_app/features/category/data/models/categories/category_response.dart';
-
+import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_add_delete/favorite_add_delete_request.dart';
+import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_add_delete/favorite_add_delete_response.dart';
+import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_delete_response/favorite_delete_response.dart';
+import 'package:flutter_ecommerce_app/features/favorites/data/models/favorites_response/favorites_response.dart';
 import 'package:flutter_ecommerce_app/features/home/data/models/home_response/home_response.dart';
 import 'package:flutter_ecommerce_app/features/login/data/models/login_response/login_response.dart';
 import 'package:flutter_ecommerce_app/features/products/data/models/product_details_response/product_details_response.dart';
@@ -46,7 +49,19 @@ abstract class ApiService {
   // get Products by Search
   @POST(ApiConstants.productsSearch)
   Future<ProductsSearchResponse> getProductsByName(
-    @Query('page') int? page,
-    @Query('name') @Body() PorductsSearchRequest porductsSearchRequest,
+    @Body() PorductsSearchRequest porductsSearchRequest,
+  );
+  // Get Favorites
+  @GET(ApiConstants.favorites)
+  Future<FavoritesResponse> getFavorites();
+  // Add Delete Favorite
+  @POST(ApiConstants.favorites)
+  Future<FavoriteAddDeleteResponse> addDeleteFavoriteByProductId(
+    @Body() FavoriteAddDeleteRequest favoriteAddDeleteRequest,
+  );
+  // Delete Favorite
+  @DELETE('${ApiConstants.favorites}/{favoriteId}')
+  Future<FavoriteDeleteResponse> deleteFavoriteByFavoriteId(
+    @Path('favoriteId') int favoriteId,
   );
 }

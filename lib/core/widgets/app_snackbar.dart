@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/core/theming/app_colors.dart';
 
 SnackBar appSnackBar({required String content, required SnackBarState state}) {
   return SnackBar(
@@ -13,11 +14,11 @@ SnackBar appSnackBar({required String content, required SnackBarState state}) {
 Color colorState(SnackBarState state) {
   switch (state) {
     case SnackBarState.success:
-      return Colors.green;
+      return AppColors.primaryGreen;
     case SnackBarState.warning:
-      return Colors.amber;
+      return AppColors.primaryYellow;
     case SnackBarState.error:
-      return Colors.red;
+      return AppColors.primaryRed;
   }
 }
 

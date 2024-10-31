@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
+import 'package:flutter_ecommerce_app/ecommerce_app.dart';
 import 'widgets/email_and_password.dart';
 import 'widgets/login_title_text.dart';
 import 'package:flutter_ecommerce_app/features/login/logic/login_cubit.dart';
@@ -19,10 +20,15 @@ class LoginScreen extends StatelessWidget {
               state: SnackBarState.success,
             ),
           );
-          context.pushAndRemoveNamed(
-            Routes.homeLayoutScreen,
-            (route) => false,
-          );
+          isUserLoggedIn().then((value) {
+            showOnBoarding().then(
+              (value) => Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => const EcommerceApp(),
+                  ),
+                  (route) => false),
+            );
+          });
         }
         if (state is LoginErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
