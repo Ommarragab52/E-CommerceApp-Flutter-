@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
+import 'package:flutter_ecommerce_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_ecommerce_app/features/category/export.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/product_details_cubit/product_details_states.dart';
@@ -73,22 +74,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           final productModel = state.product;
           initPageController(productModel);
           return Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: AppColors.neutralGrey,
-                  size: 24,
-                ),
-              ),
-              title: Text(
-                productModel?.name ?? '',
-                style: AppStyles.headingH4,
-              ),
-            ),
+            appBar: CustomAppBar(title: productModel?.name ?? 'Product Screen'),
             body: Padding(
               padding: EdgeInsets.only(
                 left: 16.w,

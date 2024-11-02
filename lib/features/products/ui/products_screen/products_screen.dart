@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
+import 'package:flutter_ecommerce_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_ecommerce_app/features/category/data/models/categories/category_response.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/proudcts_cubit/products_states.dart';
@@ -29,24 +30,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
     final screenSize = MediaQuery.sizeOf(context);
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: AppColors.neutralGrey,
-            size: 24,
-          ),
-        ),
-        title: Text(
-          widget.categoryModel != null
-              ? '${widget.categoryModel?.name?[0].toUpperCase()}${widget.categoryModel?.name!.substring(1)}'
-              : 'Products',
-          style: AppStyles.headingH4,
-        ),
-        centerTitle: true,
+      appBar: CustomAppBar(
+        title: widget.categoryModel != null
+            ? '${widget.categoryModel?.name?[0].toUpperCase()}${widget.categoryModel?.name!.substring(1)}'
+            : 'Products',
       ),
       body: Container(
         width: double.infinity,

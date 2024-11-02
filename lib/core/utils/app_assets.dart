@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/not_found.svg
   static const String imagesNotFound = "assets/images/not_found.svg";
 
+  /// Assets for imagesOffer
+  /// assets/images/offer.svg
+  static const String imagesOffer = "assets/images/offer.svg";
+
   /// Assets for imagesOnboarding1
   /// assets/images/onboarding1.png
   static const String imagesOnboarding1 = "assets/images/onboarding1.png";

@@ -73,4 +73,4 @@ class ProductsState {
     return 'ProductsState(status: $status, productsList: ${productsList?.length}, saleProductsList: ${saleProductsList?.length}, productsByCategoryList: ${productsByCategoryList?.length}, categoryId: $categoryId, page: $page, successMessage: $successMessage, errorMessage: $errorMessage)';
   }
 }
-// 
+//

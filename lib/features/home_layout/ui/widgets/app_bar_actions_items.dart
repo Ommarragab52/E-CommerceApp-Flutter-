@@ -78,11 +78,18 @@ class FavoriteAndNotifactions extends StatelessWidget {
           },
         ),
         IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.notifications_outlined,
-            size: 24,
-            color: AppColors.neutralGrey,
+          onPressed: () {
+            context.pushNamed(Routes.notificationsScreen);
+          },
+          icon: const Badge(
+            backgroundColor: AppColors.primaryRed,
+            smallSize: 8,
+            largeSize: 8,
+            child: Icon(
+              Icons.notifications_outlined,
+              size: 24,
+              color: AppColors.neutralGrey,
+            ),
           ),
         )
       ],
