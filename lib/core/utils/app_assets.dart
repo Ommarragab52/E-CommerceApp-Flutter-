@@ -14,41 +14,29 @@ class Assets {
   /// assets/fonts/Poppins-Regular.ttf
   static const String fontsPoppinsRegular = "assets/fonts/Poppins-Regular.ttf";
 
-  /// Assets for imagesAndroid12splash
-  /// assets/images/android12splash.png
-  static const String imagesAndroid12splash = "assets/images/android12splash.png";
+  /// Assets for imageAndroid12splash
+  /// assets/image/android12splash.png
+  static const String imageAndroid12splash = "assets/image/android12splash.png";
 
-  /// Assets for imagesLogo
-  /// assets/images/logo.png
-  static const String imagesLogo = "assets/images/logo.png";
+  /// Assets for imageLogo
+  /// assets/image/logo.png
+  static const String imageLogo = "assets/image/logo.png";
 
-  /// Assets for imagesNotFound
-  /// assets/images/not_found.svg
-  static const String imagesNotFound = "assets/images/not_found.svg";
+  /// Assets for imageOnboarding1
+  /// assets/image/onboarding1.png
+  static const String imageOnboarding1 = "assets/image/onboarding1.png";
 
-  /// Assets for imagesOffer
-  /// assets/images/offer.svg
-  static const String imagesOffer = "assets/images/offer.svg";
+  /// Assets for imageOnboarding2
+  /// assets/image/onboarding2.png
+  static const String imageOnboarding2 = "assets/image/onboarding2.png";
 
-  /// Assets for imagesOnboarding1
-  /// assets/images/onboarding1.png
-  static const String imagesOnboarding1 = "assets/images/onboarding1.png";
+  /// Assets for imageOnboarding3
+  /// assets/image/onboarding3.png
+  static const String imageOnboarding3 = "assets/image/onboarding3.png";
 
-  /// Assets for imagesOnboarding2
-  /// assets/images/onboarding2.png
-  static const String imagesOnboarding2 = "assets/images/onboarding2.png";
-
-  /// Assets for imagesOnboarding3
-  /// assets/images/onboarding3.png
-  static const String imagesOnboarding3 = "assets/images/onboarding3.png";
-
-  /// Assets for imagesSplash
-  /// assets/images/splash.png
-  static const String imagesSplash = "assets/images/splash.png";
-
-  /// Assets for imagesTrash
-  /// assets/images/trash.svg
-  static const String imagesTrash = "assets/images/trash.svg";
+  /// Assets for imageSplash
+  /// assets/image/splash.png
+  static const String imageSplash = "assets/image/splash.png";
 
   /// Assets for riveBasicAnimation
   /// assets/rive/basic_animation.riv
@@ -57,5 +45,21 @@ class Assets {
   /// Assets for riveBasicAnimation2
   /// assets/rive/basic_animation2.riv
   static const String riveBasicAnimation2 = "assets/rive/basic_animation2.riv";
+
+  /// Assets for svgNotFound
+  /// assets/svg/not_found.svg
+  static const String svgNotFound = "assets/svg/not_found.svg";
+
+  /// Assets for svgNotification
+  /// assets/svg/notification.svg
+  static const String svgNotification = "assets/svg/notification.svg";
+
+  /// Assets for svgOffer
+  /// assets/svg/offer.svg
+  static const String svgOffer = "assets/svg/offer.svg";
+
+  /// Assets for svgTrash
+  /// assets/svg/trash.svg
+  static const String svgTrash = "assets/svg/trash.svg";
 }
 

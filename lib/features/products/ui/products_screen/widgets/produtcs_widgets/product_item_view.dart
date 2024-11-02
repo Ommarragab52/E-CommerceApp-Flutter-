@@ -115,7 +115,7 @@ class _ProductItemViewState extends State<ProductItemView> {
                   if (widget.inFavoriteScreen == true)
                     InkWell(
                       onTap: widget.onFavoriteDeleteClick,
-                      child: SvgPicture.asset(Assets.imagesTrash),
+                      child: SvgPicture.asset(Assets.svgTrash),
                     ),
                 ],
               ),

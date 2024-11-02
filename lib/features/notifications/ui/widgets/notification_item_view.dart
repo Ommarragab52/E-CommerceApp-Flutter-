@@ -10,8 +10,11 @@ class NotificationItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.grey[100],
+      elevation: 0,
+      margin: const EdgeInsets.only(bottom: 8),
       child: ListTile(
-        leading: SvgPicture.asset(Assets.imagesOffer),
+        leading: SvgPicture.asset(Assets.svgNotification),
         title: Text(
           notificationModel.title ?? '',
           style: AppStyles.headingH5,

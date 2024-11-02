@@ -43,7 +43,7 @@ class RegisterScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Image.asset(
-                    Assets.imagesLogo,
+                    Assets.imageLogo,
                     height: 70,
                     width: 70,
                   ),

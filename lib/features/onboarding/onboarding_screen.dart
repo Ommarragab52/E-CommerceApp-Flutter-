@@ -13,17 +13,17 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<Widget> onBoardingList = [
     buildPageItem(
-      Assets.imagesOnboarding1,
+      Assets.imageOnboarding1,
       'Welcome to our app!',
       'Discover new features and enjoy our services.',
     ),
     buildPageItem(
-      Assets.imagesOnboarding2,
+      Assets.imageOnboarding2,
       'Easy to use',
       'Our app is designed to be intuitive and user-friendly.',
     ),
     buildPageItem(
-      Assets.imagesOnboarding3,
+      Assets.imageOnboarding3,
       'Stay connected',
       'Stay updated with our latest news and promotions.',
     ),
