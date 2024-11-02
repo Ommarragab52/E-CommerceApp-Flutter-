@@ -83,9 +83,10 @@ class ProductsSearchScreen extends StatelessWidget {
         itemCount: productSearchList.length,
         itemBuilder: (context, index) => InkWell(
               onTap: () {
-                context.pushNamed(Routes.productDetailsScreen, arguments: {
-                  'productModel': productSearchList[index],
-                });
+                context.pushNamed(
+                  Routes.productDetailsScreen,
+                  arguments: productSearchList[index].id,
+                );
               },
               child: ListTile(
                 title: Text(

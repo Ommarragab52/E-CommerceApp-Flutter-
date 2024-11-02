@@ -7,6 +7,7 @@ import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_de
 import 'package:flutter_ecommerce_app/features/favorites/data/models/favorites_response/favorites_response.dart';
 import 'package:flutter_ecommerce_app/features/home/data/models/home_response/home_response.dart';
 import 'package:flutter_ecommerce_app/features/login/data/models/login_response/login_response.dart';
+import 'package:flutter_ecommerce_app/features/notifications/data/models/notifications_response/notifications_response.dart';
 import 'package:flutter_ecommerce_app/features/products/data/models/product_details_response/product_details_response.dart';
 import 'package:flutter_ecommerce_app/features/products/data/models/product_response/products_response.dart';
 import 'package:flutter_ecommerce_app/features/register/data/models/register_response/register_response.dart';
@@ -64,4 +65,7 @@ abstract class ApiService {
   Future<FavoriteDeleteResponse> deleteFavoriteByFavoriteId(
     @Path('favoriteId') int favoriteId,
   );
+  // Get Notifications
+  @GET(ApiConstants.notifications)
+  Future<NotificationsResponse> getNotifications();
 }

@@ -7,4 +7,5 @@ class ApiConstants {
   static const categories = 'categories';
   static const products = 'products';
   static const favorites = 'favorites';
+  static const notifications = 'notifications';
 }

@@ -5,6 +5,7 @@ import 'package:flutter_ecommerce_app/features/category/data/models/categories/c
 import 'package:flutter_ecommerce_app/features/favorites/ui/favorites_screen.dart';
 import 'package:flutter_ecommerce_app/features/login/logic/login_cubit.dart';
 import 'package:flutter_ecommerce_app/features/login/ui/login_screen.dart';
+import 'package:flutter_ecommerce_app/features/notifications/ui/notifications_screen.dart';
 import 'package:flutter_ecommerce_app/features/onboarding/onboarding_screen.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/product_details_screen/product_details_screen.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/products_screen.dart';
@@ -69,6 +70,16 @@ class AppRouter {
       case Routes.favoritesScreen:
         return MaterialPageRoute(
             builder: (BuildContext context) => const FavoritesScreen());
+
+      case Routes.notificationsScreen:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => BlocProvider(
+            create: (context) =>
+                ServiceLocator.notificationsCubit..getNotifications(),
+            child: const NotificationsScreen(),
+          ),
+        );
+
       default:
         return null;
     }

@@ -6,6 +6,8 @@ import 'package:flutter_ecommerce_app/features/category/logic/category_cubit.dar
 import 'package:flutter_ecommerce_app/features/favorites/data/repos/favorites_repository.dart';
 import 'package:flutter_ecommerce_app/features/favorites/logic/favorites_cubit.dart';
 import 'package:flutter_ecommerce_app/features/home/data/repository/home_repository.dart';
+import 'package:flutter_ecommerce_app/features/notifications/data/repo/notifications_repo.dart';
+import 'package:flutter_ecommerce_app/features/notifications/logic/cubit/notifications_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/data/repos/products_search_repository.dart';
 import 'package:flutter_ecommerce_app/features/home/logic/home_cubit.dart';
 import 'package:flutter_ecommerce_app/features/home_layout/logic/cubit/home_layout_cubit.dart';
@@ -75,6 +77,12 @@ class ServiceLocator {
     getIt.registerLazySingleton<FavoritesCubit>(
       () => FavoritesCubit(getIt()),
     );
+    // notifications
+    getIt.registerLazySingleton<NotificationsRepo>(
+        () => NotificationsRepo(getIt()));
+    getIt.registerFactory<NotificationsCubit>(
+      () => NotificationsCubit(getIt()),
+    );
   }
 
   static HomeLayoutCubit get homeLayoutCubit => getIt<HomeLayoutCubit>();
@@ -89,4 +97,6 @@ class ServiceLocator {
   static ProductsSearchCubit get productsSearchCubit =>
       getIt<ProductsSearchCubit>();
   static FavoritesCubit get favoritesCubit => getIt<FavoritesCubit>();
+  static NotificationsCubit get notificationsCubit =>
+      getIt<NotificationsCubit>();
 }

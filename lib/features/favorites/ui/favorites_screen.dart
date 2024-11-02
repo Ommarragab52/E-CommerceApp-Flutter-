@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/features/favorites/logic/favorites_cubit.dart';
 import 'package:flutter_ecommerce_app/features/favorites/logic/favorites_state.dart';
+import 'package:flutter_ecommerce_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/products_error_view.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/produtcs_widgets/product_item_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,21 +17,8 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios_new_rounded,
-            color: AppColors.neutralGrey,
-            size: 24,
-          ),
-        ),
-        title: Text(
-          'Favorite Products',
-          style: AppStyles.headingH4,
-        ),
+      appBar: const CustomAppBar(
+        title: 'Favorite Products',
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -75,9 +63,12 @@ class FavoritesScreen extends StatelessWidget {
                 if (state is GetFavoritesSuccessState) {
                   if (state.favoritesList.isNullOrEmpty()) {
                     // show no result widget
-                    return const SliverFillRemaining(
+                    return SliverFillRemaining(
                       child: Center(
-                        child: Text('No Data Found'),
+                        child: Text(
+                          'No Data Found',
+                          style: AppStyles.headingH5,
+                        ),
                       ),
                     );
                   }
@@ -121,9 +112,12 @@ class FavoritesScreen extends StatelessWidget {
                 }
                 // Show no data result
                 else {
-                  return const SliverFillRemaining(
+                  return SliverFillRemaining(
                     child: Center(
-                      child: Text('No Data Found'),
+                      child: Text(
+                        'No Data Found',
+                        style: AppStyles.headingH5,
+                      ),
                     ),
                   );
                 }
