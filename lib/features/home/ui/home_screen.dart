@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
                 haveButton: true,
                 onPressed: () {
                   if (!productsCubit.state.saleProductsList.isNullOrEmpty()) {
-                    context.pushNamed(Routes.productsScreen);
+                    // context.pushNamed(Routes.productsScreen);
                   }
                 },
               ),
@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 haveButton: true,
                 onPressed: () {
                   if (!productsCubit.state.productsList.isNullOrEmpty()) {
-                    context.pushNamed(Routes.productsScreen);
+                    // context.pushNamed(Routes.productsScreen);
                   }
                 },
               ),
