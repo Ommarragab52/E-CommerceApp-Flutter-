@@ -48,6 +48,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     int productId,
     bool newValue,
   ) async {
+    favoritesMap![productId] = newValue;
     emit(AddDeleteFavoriteLoadingState());
     final result =
         await _favoritesRepository.addDeleteFavoriteByProductId(productId);
@@ -56,11 +57,10 @@ class FavoritesCubit extends Cubit<FavoritesState> {
       success: (response) {
         emit(AddDeleteFavoriteSuccessState(
             response.message ?? 'Added to favorites successfully'));
-        favoritesMap![productId] = newValue;
         fetchFavorites();
       },
       failure: (error) {
-        favoritesMap![productId] = newValue;
+        favoritesMap![productId] = !newValue;
         emit(AddDeleteFavoriteFailureState(
             error.message ?? 'Unknown error occured'));
       },

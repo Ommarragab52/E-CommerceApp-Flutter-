@@ -25,7 +25,7 @@ class FavoriteIconButton extends StatelessWidget {
       },
       builder: (context, state) {
         bool isfavorite =
-            ServiceLocator.favoritesCubit.favoritesMap![productModel.id] ??
+            ServiceLocator.favoritesCubit.favoritesMap?[productModel.id] ??
                 productModel.inFavorites!;
         return CircleAvatar(
           radius: 16,

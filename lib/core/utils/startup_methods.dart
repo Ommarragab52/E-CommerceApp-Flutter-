@@ -56,6 +56,10 @@ Widget buildBlocProviders(Widget child) {
       BlocProvider(
         create: (context) => ServiceLocator.favoritesCubit..fetchFavorites(),
       ),
+      BlocProvider(
+        create: (context) =>
+            ServiceLocator.notificationsCubit..getNotifications(),
+      ),
     ],
     child: child,
   );

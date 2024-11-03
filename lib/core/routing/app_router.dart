@@ -73,11 +73,7 @@ class AppRouter {
 
       case Routes.notificationsScreen:
         return MaterialPageRoute(
-          builder: (BuildContext context) => BlocProvider(
-            create: (context) =>
-                ServiceLocator.notificationsCubit..getNotifications(),
-            child: const NotificationsScreen(),
-          ),
+          builder: (BuildContext context) => const NotificationsScreen(),
         );
 
       default:
