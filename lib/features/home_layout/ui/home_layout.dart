@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_ecommerce_app/core/di/dpendency_injection.dart';
 import 'package:flutter_ecommerce_app/core/theming/app_colors.dart';
+import 'package:flutter_ecommerce_app/core/theming/app_styles.dart';
+import 'package:flutter_ecommerce_app/core/widgets/app_snackbar.dart';
+import 'package:flutter_ecommerce_app/features/cart/logic/cubit/cart_cubit.dart';
 import 'package:flutter_ecommerce_app/features/home_layout/ui/widgets/home_app_bar.dart';
 import 'package:flutter_ecommerce_app/features/home_layout/logic/cubit/home_layout_cubit.dart';
 import 'package:flutter_ecommerce_app/features/home_layout/logic/cubit/home_layout_state.dart';
@@ -43,8 +47,8 @@ class HomeLayout extends StatelessWidget {
             indicatorColor: Colors.white,
             surfaceTintColor: Colors.white,
             shadowColor: Colors.white,
-            destinations: const [
-              NavigationDestination(
+            destinations: [
+              const NavigationDestination(
                 label: 'Home',
                 icon: Icon(
                   Icons.home_rounded,
@@ -55,7 +59,7 @@ class HomeLayout extends StatelessWidget {
                   color: AppColors.primaryBlue,
                 ),
               ),
-              NavigationDestination(
+              const NavigationDestination(
                 label: 'Category',
                 icon: Icon(
                   Icons.grid_view_outlined,
@@ -68,16 +72,32 @@ class HomeLayout extends StatelessWidget {
               ),
               NavigationDestination(
                 label: 'Cart',
-                icon: Icon(
-                  Icons.shopping_cart_sharp,
-                  color: AppColors.neutralGrey,
+                icon: BlocBuilder<CartCubit, CartState>(
+                  builder: (context, state) {
+                    int cartCount = ServiceLocator.cartCubit.cartList.length;
+                    return Badge(
+                      backgroundColor: AppColors.primaryBlue,
+                      padding: const EdgeInsets.all(2),
+                      offset: const Offset(6, -6),
+                      label: Text(
+                        '$cartCount',
+                        style: AppStyles.captionnormalbold
+                            .copyWith(color: Colors.white),
+                      ),
+                      isLabelVisible: cartCount > 0,
+                      child: const Icon(
+                        Icons.shopping_cart_sharp,
+                        color: AppColors.neutralGrey,
+                      ),
+                    );
+                  },
                 ),
-                selectedIcon: Icon(
+                selectedIcon: const Icon(
                   Icons.shopping_cart_sharp,
                   color: AppColors.primaryBlue,
                 ),
               ),
-              NavigationDestination(
+              const NavigationDestination(
                 label: 'Account',
                 icon: Icon(
                   Icons.person,

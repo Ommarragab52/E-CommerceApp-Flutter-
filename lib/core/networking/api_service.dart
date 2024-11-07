@@ -1,5 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_ecommerce_app/core/networking/api_constants.dart';
+import 'package:flutter_ecommerce_app/features/cart/data/models/add_delete_cart/add_delete_cart_request.dart';
+import 'package:flutter_ecommerce_app/features/cart/data/models/add_delete_cart/add_delete_cart_response.dart';
+import 'package:flutter_ecommerce_app/features/cart/data/models/cart_response/cart_response.dart';
+import 'package:flutter_ecommerce_app/features/cart/data/models/update_cart/update_cart_request.dart';
+import 'package:flutter_ecommerce_app/features/cart/data/models/update_cart/update_cart_response.dart';
 import 'package:flutter_ecommerce_app/features/category/data/models/categories/category_response.dart';
 import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_add_delete/favorite_add_delete_request.dart';
 import 'package:flutter_ecommerce_app/features/favorites/data/models/favorite_add_delete/favorite_add_delete_response.dart';
@@ -68,4 +73,21 @@ abstract class ApiService {
   // Get Notifications
   @GET(ApiConstants.notifications)
   Future<NotificationsResponse> getNotifications();
+
+  // Get Carts
+  @GET(ApiConstants.carts)
+  Future<CartResponse> getCarts();
+
+  // Add Delete Carts
+  @POST(ApiConstants.carts)
+  Future<AddDeleteCartResponse> addDeleteCartByProductId(
+    @Body() AddDeleteCartRequest addDeleteCartRequest,
+  );
+
+  // Update Cart
+  @PUT('${ApiConstants.carts}/{cartId}')
+  Future<UpdateCartResponse> updateCartByCartId(
+    @Path('cartId') int cartId,
+    @Body() UpdateCartRequest updateCartRequest,
+  );
 }

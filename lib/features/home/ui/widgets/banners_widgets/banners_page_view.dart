@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/core/utils/app_extenstions.dart';
 import 'package:flutter_ecommerce_app/core/theming/app_colors.dart';
 import 'package:flutter_ecommerce_app/features/home/data/models/home_response/home_response.dart';
@@ -20,39 +23,8 @@ class BannersPageView extends StatefulWidget {
 }
 
 class _BannersPageViewState extends State<BannersPageView> {
-  PageController pageController = PageController(initialPage: 0);
+  CarouselSliderController carouselController = CarouselSliderController();
   int currentPage = 0;
-  late Timer? timer;
-
-  @override
-  void initState() {
-    super.initState();
-    // initilze timer when init first Widget state
-    if (!widget.bannersList.isNullOrEmpty()) {
-      timer = Timer.periodic(
-        const Duration(seconds: 3),
-        (timer) {
-          if (currentPage < widget.bannersList!.length - 1) {
-            currentPage++;
-          } else {
-            currentPage = 0;
-          }
-          pageController.animateToPage(
-            currentPage,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeIn,
-          );
-        },
-      );
-    }
-  }
-
-  @override
-  void dispose() {
-    timer?.cancel(); // Cancel the timer when the widget is disposed
-    pageController.dispose(); // Dispose of the PageController
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,47 +32,44 @@ class _BannersPageViewState extends State<BannersPageView> {
       children: [
         SizedBox(
           height: 206.h,
-          width: double.infinity,
-          child: PageView.builder(
-            controller: pageController,
-            itemCount: widget.bannersList.isNullOrEmpty()
-                ? 1
-                : widget.bannersList!.length,
-            onPageChanged: (index) {
-              currentPage = index;
-            },
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) => BannerListViewItem(
-              banner: widget.bannersList.isNullOrEmpty()
-                  ? null
-                  : widget.bannersList![index],
+          child: CarouselSlider.builder(
+            carouselController: carouselController,
+            itemCount: widget.bannersList!.length,
+            itemBuilder: (context, index, realIndex) => CachedNetworkImage(
+              imageUrl: widget.bannersList![index].image!,
+              fit: BoxFit.contain,
+              filterQuality: FilterQuality.low,
+            ),
+            options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              onPageChanged: (index, reason) {
+                currentPage = index;
+                setState(() {});
+              },
             ),
           ),
         ),
-        SmoothPageIndicator(
-          controller: pageController,
-          count: widget.bannersList.isNullOrEmpty()
-              ? 5
-              : widget.bannersList!.length - 1,
-          effect: ScrollingDotsEffect(
-            activeDotColor: widget.bannersList.isNullOrEmpty()
-                ? AppColors.neutralLight
-                : AppColors.primaryBlue,
-            dotColor: AppColors.neutralLight,
-            dotHeight: 8.h,
-            dotWidth: 8.w,
+        verticalSpace(8),
+        Center(
+          child: AnimatedSmoothIndicator(
+            activeIndex: currentPage,
+            count: widget.bannersList?.length ?? 5,
+            effect: ScrollingDotsEffect(
+              activeDotColor: widget.bannersList.isNullOrEmpty()
+                  ? AppColors.neutralLight
+                  : AppColors.primaryBlue,
+              dotColor: AppColors.neutralLight,
+              dotHeight: 8.h,
+              dotWidth: 8.w,
+            ),
+            onDotClicked: (index) {
+              setState(() {
+                currentPage = index;
+                carouselController.animateToPage(currentPage);
+              });
+            },
           ),
-          onDotClicked: (index) {
-            setState(() {
-              currentPage = index;
-              pageController.animateToPage(
-                currentPage,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeIn,
-              );
-            });
-          },
         ),
       ],
     );
