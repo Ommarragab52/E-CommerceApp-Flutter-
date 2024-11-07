@@ -19,86 +19,90 @@ class CartItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
-      builder: (context, state) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: 8.h),
-          child: GestureDetector(
-            onTap: onCartClick,
-            child: Container(
-              height: 110.h,
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.neutralLight),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Row(
-                children: [
-                  CachedNetworkImage(
-                    imageUrl: cartItem.product?.image ?? '',
-                    fit: BoxFit.contain,
-                    filterQuality: FilterQuality.low,
-                    width: 72.w,
-                    height: 72.h,
-                  ),
-                  horizontalSpace(12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  cartItem.product?.name ?? '',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: AppStyles.headingH6,
-                                ),
-                              ),
-                              IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {
-                                  ServiceLocator.cartCubit
-                                      .addDeleteCart(cartItem.product!.id!);
-                                },
-                                icon: SvgPicture.asset(Assets.svgTrash),
-                              )
-                            ],
-                          ),
-                        ),
-                        verticalSpace(12),
-                        Flexible(
-                          child: Row(
-                            children: [
-                              (state is CartUpdateLoading)
-                                  ? SizedBox(
-                                      width: 20.w,
-                                      height: 20.h,
-                                      child: const CircularProgressIndicator(),
-                                    )
-                                  : Text(
-                                      '\$${cartItem.quantity! * cartItem.product!.price!}',
-                                      style: AppStyles.headingH6.copyWith(
-                                        color: AppColors.primaryBlue,
-                                      ),
-                                    ),
-                              const Spacer(),
-                              CartCounter(cartItem: cartItem),
-                            ],
-                          ),
-                        ),
-                      ],
+    return BlocProvider(
+      create: (context) => CartCubit(ServiceLocator.getIt()),
+      child: BlocBuilder<CartCubit, CartState>(
+        builder: (context, state) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: 8.h),
+            child: GestureDetector(
+              onTap: onCartClick,
+              child: Container(
+                height: 110.h,
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(16.w),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.neutralLight),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Row(
+                  children: [
+                    CachedNetworkImage(
+                      imageUrl: cartItem.product?.image ?? '',
+                      fit: BoxFit.contain,
+                      filterQuality: FilterQuality.low,
+                      width: 72.w,
+                      height: 72.h,
                     ),
-                  ),
-                ],
+                    horizontalSpace(12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    cartItem.product?.name ?? '',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: AppStyles.headingH6,
+                                  ),
+                                ),
+                                IconButton(
+                                  padding: EdgeInsets.zero,
+                                  onPressed: () {
+                                    ServiceLocator.cartCubit
+                                        .addDeleteCart(cartItem.product!.id!);
+                                  },
+                                  icon: SvgPicture.asset(Assets.svgTrash),
+                                )
+                              ],
+                            ),
+                          ),
+                          verticalSpace(12),
+                          Flexible(
+                            child: Row(
+                              children: [
+                                (state is CartUpdateLoading)
+                                    ? SizedBox(
+                                        width: 20.w,
+                                        height: 20.h,
+                                        child:
+                                            const CircularProgressIndicator(),
+                                      )
+                                    : Text(
+                                        '\$${cartItem.quantity! * cartItem.product!.price!}',
+                                        style: AppStyles.headingH6.copyWith(
+                                          color: AppColors.primaryBlue,
+                                        ),
+                                      ),
+                                const Spacer(),
+                                CartCounter(cartItem: cartItem),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
