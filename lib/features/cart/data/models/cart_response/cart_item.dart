@@ -7,7 +7,6 @@ part 'cart_item.g.dart';
 class CartItem {
   int? id;
   int? quantity;
-  @JsonKey(name: 'product')
   ProductModel? product;
 
   CartItem({this.id, this.quantity, this.product});

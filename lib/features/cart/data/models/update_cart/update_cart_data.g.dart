@@ -8,16 +8,16 @@ part of 'update_cart_data.dart';
 
 UpdateCartData _$UpdateCartDataFromJson(Map<String, dynamic> json) =>
     UpdateCartData(
-      cartItem: json['cartItem'] == null
+      cartItem: json['cart'] == null
           ? null
-          : CartItem.fromJson(json['cartItem'] as Map<String, dynamic>),
+          : CartItem.fromJson(json['cart'] as Map<String, dynamic>),
       subTotal: (json['sub_total'] as num?)?.toInt(),
       total: (json['total'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$UpdateCartDataToJson(UpdateCartData instance) =>
     <String, dynamic>{
-      'cartItem': instance.cartItem,
+      'cart': instance.cartItem,
       'sub_total': instance.subTotal,
       'total': instance.total,
     };

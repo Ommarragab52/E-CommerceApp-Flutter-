@@ -5,6 +5,7 @@ part 'update_cart_data.g.dart';
 
 @JsonSerializable()
 class UpdateCartData {
+  @JsonKey(name: 'cart')
   CartItem? cartItem;
   @JsonKey(name: 'sub_total')
   int? subTotal;

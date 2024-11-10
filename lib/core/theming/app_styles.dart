@@ -154,6 +154,7 @@ class AppStyles {
   static TextStyle get formtextnormal => TextStyle(
         fontSize: 12.sp,
         fontFamily: Assets.fontsPoppinsRegular,
+        color: AppColors.neutralGrey,
         fontStyle: FontStyle.normal,
         fontWeight: FontWeight.w400,
       );

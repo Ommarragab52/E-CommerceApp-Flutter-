@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theming/app_colors.dart';
 import '../theming/app_styles.dart';
 
-class AppTextFormField extends StatelessWidget {
+class AppTextFormField extends StatefulWidget {
   final bool? isPassword;
   final String hintText;
   final TextStyle? hintStyle;
@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final Color? prefixIconColor;
   final Widget? sufixIcon;
   final bool? readOnly;
+  final bool? enabled;
   final bool? autofocus;
   final EdgeInsetsGeometry? contentPadding;
   final TextEditingController? controller;
@@ -39,30 +40,47 @@ class AppTextFormField extends StatelessWidget {
       this.autofocus,
       this.prefixIconColor,
       this.readOnly,
-      this.onChanged});
+      this.onChanged,
+      this.enabled});
+
+  @override
+  State<AppTextFormField> createState() => _AppTextFormFieldState();
+}
+
+class _AppTextFormFieldState extends State<AppTextFormField> {
+  final FocusNode focusNode = FocusNode();
+
+  @override
+  dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTap: onTap,
-      controller: controller,
-      keyboardType: keyboardType,
-      validator: validator,
-      readOnly: readOnly ?? false,
+      onTap: widget.onTap,
+      controller: widget.controller,
+      keyboardType: widget.keyboardType,
+      validator: widget.validator,
+      readOnly: widget.readOnly ?? false,
+      enabled: widget.enabled ?? true,
       style: AppStyles.bodyTextMediumBold,
-      obscureText: isPassword ?? false,
-      autofocus: autofocus ?? false,
+      obscureText: widget.isPassword ?? false,
+      autofocus: widget.autofocus ?? false,
+      focusNode: focusNode,
+      onTapOutside: (_) => focusNode.unfocus(),
       textAlignVertical: TextAlignVertical.center,
-      onChanged: onChanged,
+      onChanged: widget.onChanged,
       decoration: InputDecoration(
-        contentPadding: contentPadding ??
+        contentPadding: widget.contentPadding ??
             EdgeInsetsDirectional.symmetric(vertical: 13.w, horizontal: 13.h),
-        hintText: hintText,
+        hintText: widget.hintText,
         isDense: true,
         alignLabelWithHint: true,
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        suffixIcon: sufixIcon,
-        prefixIconColor: prefixIconColor ??
+        prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon) : null,
+        suffixIcon: widget.sufixIcon,
+        prefixIconColor: widget.prefixIconColor ??
             WidgetStateColor.resolveWith(
               (states) {
                 if (states.contains(WidgetState.error)) {
@@ -74,14 +92,16 @@ class AppTextFormField extends StatelessWidget {
                 }
               },
             ),
-        hintStyle: hintStyle ?? AppStyles.bodyTextNormalRegular,
-        enabledBorder: enabledBorder ??
+        hintStyle: widget.hintStyle ?? AppStyles.formtextnormal,
+        enabledBorder: widget.enabledBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
               borderSide: const BorderSide(
-                  color: AppColors.neutralLight, strokeAlign: 1),
+                color: AppColors.neutralLight,
+                strokeAlign: 1,
+              ),
             ),
-        focusedBorder: focusedBorder,
+        focusedBorder: widget.focusedBorder,
         errorStyle: AppStyles.bodyTextNormalBold.copyWith(
           color: AppColors.primaryRed,
         ),

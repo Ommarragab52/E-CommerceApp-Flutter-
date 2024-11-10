@@ -74,7 +74,7 @@ class HomeLayout extends StatelessWidget {
                 label: 'Cart',
                 icon: BlocBuilder<CartCubit, CartState>(
                   builder: (context, state) {
-                    int cartCount = ServiceLocator.cartCubit.cartList.length;
+                    int cartCount = ServiceLocator.cartCubit.cartMap.length;
                     return Badge(
                       backgroundColor: AppColors.primaryBlue,
                       padding: const EdgeInsets.all(2),

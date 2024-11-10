@@ -7,8 +7,8 @@ class CartInitial extends CartState {}
 class CartGetDataLoading extends CartState {}
 
 class CartGetDataSuccess extends CartState {
-  final List<CartItem>? cartList;
-  CartGetDataSuccess(this.cartList);
+  final Map<int, CartItem> cartMap;
+  CartGetDataSuccess(this.cartMap);
 }
 
 class CartGetDataFailure extends CartState {

@@ -9,6 +9,7 @@ import 'package:flutter_ecommerce_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/products_error_view.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/produtcs_widgets/product_item_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -18,7 +19,7 @@ class FavoritesScreen extends StatelessWidget {
     final screenSize = MediaQuery.sizeOf(context);
     return Scaffold(
       appBar: const CustomAppBar(
-        title: 'Favorite Products',
+        title: 'Favorites',
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -65,9 +66,19 @@ class FavoritesScreen extends StatelessWidget {
                     // show no result widget
                     return SliverFillRemaining(
                       child: Center(
-                        child: Text(
-                          'No Data Found',
-                          style: AppStyles.headingH5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              Assets.imageNoFavorites,
+                              scale: 6,
+                            ),
+                            verticalSpace(22),
+                            Text(
+                              'No Favorites yet',
+                              style: AppStyles.headingH5,
+                            ),
+                          ],
                         ),
                       ),
                     );

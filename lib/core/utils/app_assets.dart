@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for fontsJannaLtBold
   /// assets/fonts/janna-lt-bold.ttf
   static const String fontsJannaLtBold = "assets/fonts/janna-lt-bold.ttf";
@@ -18,9 +18,17 @@ class Assets {
   /// assets/image/android12splash.png
   static const String imageAndroid12splash = "assets/image/android12splash.png";
 
+  /// Assets for imageEmptyCart
+  /// assets/image/empty_cart.png
+  static const String imageEmptyCart = "assets/image/empty_cart.png";
+
   /// Assets for imageLogo
   /// assets/image/logo.png
   static const String imageLogo = "assets/image/logo.png";
+
+  /// Assets for imageNoFavorites
+  /// assets/image/no_favorites.png
+  static const String imageNoFavorites = "assets/image/no_favorites.png";
 
   /// Assets for imageOnboarding1
   /// assets/image/onboarding1.png
@@ -62,3 +70,4 @@ class Assets {
   /// assets/svg/trash.svg
   static const String svgTrash = "assets/svg/trash.svg";
 }
+
