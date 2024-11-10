@@ -1,10 +1,10 @@
-import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ecommerce_app/core/export.dart';
 import 'package:flutter_ecommerce_app/core/widgets/custom_app_bar.dart';
-import 'package:flutter_ecommerce_app/features/category/export.dart';
+import 'package:flutter_ecommerce_app/features/cart/logic/cubit/cart_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/product_details_cubit/product_details_cubit.dart';
 import 'package:flutter_ecommerce_app/features/products/logic/product_details_cubit/product_details_states.dart';
 import 'package:flutter_ecommerce_app/features/products/ui/products_screen/widgets/produtcs_widgets/favorite_icon_button.dart';
@@ -21,41 +21,8 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  PageController pageController = PageController(initialPage: 0);
+  CarouselSliderController carouselController = CarouselSliderController();
   int currentPage = 0;
-  late Timer? timer;
-
-  initPageController(ProductModel? productModel) {
-    final images = productModel?.images;
-    if (!images!.isNullOrEmpty()) {
-      timer = Timer.periodic(
-        const Duration(seconds: 3),
-        (timer) {
-          if (currentPage < images.length - 1) {
-            currentPage++;
-          } else {
-            currentPage = 0;
-          }
-          pageController.animateToPage(
-            currentPage,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeIn,
-          );
-        },
-      );
-    }
-  }
-
-  @override
-  void dispose() {
-    if (timer != null) {
-      timer!.cancel();
-    }
-
-    pageController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.sizeOf(context).width;
@@ -72,7 +39,6 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         }
         if (state.status == ProductsDetailsStateStatus.success) {
           final productModel = state.product;
-          initPageController(productModel);
           return Scaffold(
             appBar: CustomAppBar(title: productModel?.name ?? 'Product Screen'),
             body: Padding(
@@ -86,30 +52,33 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: double.infinity,
                       height: 238.h,
-                      child: PageView.builder(
-                        controller: pageController,
-                        onPageChanged: (value) {
-                          currentPage = value;
-                        },
-                        physics: const BouncingScrollPhysics(),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: productModel?.images?.length,
-                        itemBuilder: (context, index) => CachedNetworkImage(
-                          imageUrl: productModel?.images?[index] ?? '',
+                      child: CarouselSlider.builder(
+                        carouselController: carouselController,
+                        itemCount: productModel!.images!.length,
+                        itemBuilder: (context, index, realIndex) =>
+                            CachedNetworkImage(
+                          imageUrl: productModel.images![index],
                           fit: BoxFit.contain,
                           filterQuality: FilterQuality.low,
+                        ),
+                        options: CarouselOptions(
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          onPageChanged: (index, reason) {
+                            currentPage = index;
+                            setState(() {});
+                          },
                         ),
                       ),
                     ),
                     verticalSpace(8),
                     Center(
-                      child: SmoothPageIndicator(
-                        controller: pageController,
-                        count: productModel?.images?.length ?? 5,
+                      child: AnimatedSmoothIndicator(
+                        activeIndex: currentPage,
+                        count: productModel.images?.length ?? 5,
                         effect: ScrollingDotsEffect(
-                          activeDotColor: productModel!.images.isNullOrEmpty()
+                          activeDotColor: productModel.images.isNullOrEmpty()
                               ? AppColors.neutralLight
                               : AppColors.primaryBlue,
                           dotColor: AppColors.neutralLight,
@@ -119,11 +88,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         onDotClicked: (index) {
                           setState(() {
                             currentPage = index;
-                            pageController.animateToPage(
-                              currentPage,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.easeIn,
-                            );
+                            carouselController.animateToPage(currentPage);
                           });
                         },
                       ),
@@ -208,23 +173,34 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 ),
               ),
             ),
-            bottomSheet: Padding(
-              padding: EdgeInsetsDirectional.only(
-                start: 16.w,
-                end: 16.w,
-                bottom: 16.h,
-              ),
-              child: productModel.inCart != null
-                  ? AppButton(
+            bottomSheet: BlocConsumer<CartCubit, CartState>(
+              listener: (context, state) {
+                if (state is CartAddDeleteSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(appSnackBar(
+                      content: state.message, state: SnackBarState.success));
+                } else if (state is CartAddDeleteFailure) {
+                  ScaffoldMessenger.of(context).showSnackBar(appSnackBar(
+                      content: state.error, state: SnackBarState.error));
+                }
+              },
+              builder: (context, state) {
+                return Padding(
+                    padding: EdgeInsetsDirectional.only(
+                      start: 16.w,
+                      end: 16.w,
+                      bottom: 16.h,
+                    ),
+                    child: AppButton(
                       onPressed: () {
-                        // navigate to cart
+                        ServiceLocator.cartCubit
+                            .addDeleteCart(productModel.id!);
+                        productModel.inCart = !productModel.inCart!;
                       },
-                      text: 'View Cart')
-                  : AppButton(
-                      onPressed: () {
-                        // add item to cart
-                      },
-                      text: 'Add To Cart'),
+                      text: productModel.inCart!
+                          ? 'Remove From Cart'
+                          : 'Add To Cart',
+                    ));
+              },
             ),
           );
         }

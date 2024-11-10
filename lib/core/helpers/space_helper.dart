@@ -4,3 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 SizedBox verticalSpace(double height) => SizedBox(height: height.h);
 
 SizedBox horizontalSpace(double width) => SizedBox(width: width.w);
+
+SliverToBoxAdapter sliverVerticalSpace(double height) => SliverToBoxAdapter(
+      child: verticalSpace(height),
+    );
+
+SliverToBoxAdapter sliverHorizontalSpace(double width) => SliverToBoxAdapter(
+      child: horizontalSpace(width),
+    );

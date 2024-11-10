@@ -21,10 +21,8 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   void changeIndex({required int index}) {
     if (state.currentIndex != index) {
       if (pageViewControaller.hasClients) {
-        pageViewControaller.animateToPage(
+        pageViewControaller.jumpToPage(
           index,
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
         );
       }
       emit(state.copyWith(currentIndex: index));

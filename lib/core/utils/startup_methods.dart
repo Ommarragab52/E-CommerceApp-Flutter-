@@ -60,6 +60,9 @@ Widget buildBlocProviders(Widget child) {
         create: (context) =>
             ServiceLocator.notificationsCubit..getNotifications(),
       ),
+      BlocProvider(
+        create: (context) => ServiceLocator.cartCubit..getCarts(),
+      ),
     ],
     child: child,
   );

@@ -8,4 +8,5 @@ class ApiConstants {
   static const products = 'products';
   static const favorites = 'favorites';
   static const notifications = 'notifications';
+  static const carts = 'carts';
 }
