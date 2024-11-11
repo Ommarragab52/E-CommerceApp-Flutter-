@@ -45,7 +45,7 @@ class ServiceLocator {
     getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
 
     //home layout
-    getIt.registerFactory<HomeLayoutCubit>(() => HomeLayoutCubit());
+    getIt.registerLazySingleton<HomeLayoutCubit>(() => HomeLayoutCubit());
 
     //home
     getIt.registerLazySingleton<HomeRepository>(() => HomeRepository(getIt()));

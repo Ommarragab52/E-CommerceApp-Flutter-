@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -185,21 +187,29 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               },
               builder: (context, state) {
                 return Padding(
-                    padding: EdgeInsetsDirectional.only(
-                      start: 16.w,
-                      end: 16.w,
-                      bottom: 16.h,
-                    ),
-                    child: AppButton(
-                      onPressed: () {
-                        ServiceLocator.cartCubit
-                            .addDeleteCart(productModel.id!);
-                        productModel.inCart = !productModel.inCart!;
-                      },
-                      text: productModel.inCart!
-                          ? 'Remove From Cart'
-                          : 'Add To Cart',
-                    ));
+                  padding: EdgeInsetsDirectional.only(
+                    start: 16.w,
+                    end: 16.w,
+                    bottom: 16.h,
+                  ),
+                  child: productModel.inCart!
+                      ? AppButton(
+                          onPressed: () {
+                            // context
+                            //     .pushReplecmentNamed(Routes.homeLayoutScreen);
+                            // context.read<HomeLaoutCubit>().changeIndex(index: 2);
+                          },
+                          text: 'View Cart',
+                        )
+                      : AppButton(
+                          onPressed: () {
+                            ServiceLocator.cartCubit
+                                .addDeleteCart(productModel.id!);
+                            productModel.inCart = !productModel.inCart!;
+                          },
+                          text: 'Add To Cart',
+                        ),
+                );
               },
             ),
           );

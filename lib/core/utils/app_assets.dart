@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for fontsJannaLtBold
   /// assets/fonts/janna-lt-bold.ttf
   static const String fontsJannaLtBold = "assets/fonts/janna-lt-bold.ttf";
@@ -54,6 +54,10 @@ class Assets {
   /// assets/rive/basic_animation2.riv
   static const String riveBasicAnimation2 = "assets/rive/basic_animation2.riv";
 
+  /// Assets for svgAddress
+  /// assets/svg/address.svg
+  static const String svgAddress = "assets/svg/address.svg";
+
   /// Assets for svgNotFound
   /// assets/svg/not_found.svg
   static const String svgNotFound = "assets/svg/not_found.svg";
@@ -66,8 +70,19 @@ class Assets {
   /// assets/svg/offer.svg
   static const String svgOffer = "assets/svg/offer.svg";
 
+  /// Assets for svgOrder
+  /// assets/svg/order.svg
+  static const String svgOrder = "assets/svg/order.svg";
+
+  /// Assets for svgPayment
+  /// assets/svg/payment.svg
+  static const String svgPayment = "assets/svg/payment.svg";
+
+  /// Assets for svgProfile
+  /// assets/svg/profile.svg
+  static const String svgProfile = "assets/svg/profile.svg";
+
   /// Assets for svgTrash
   /// assets/svg/trash.svg
   static const String svgTrash = "assets/svg/trash.svg";
 }
-
